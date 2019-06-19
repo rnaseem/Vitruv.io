@@ -3,3 +3,13 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+svg {
+  position: relative;
+  z-index: 10;
+}
+
+#root {
+  min-height: 100vh;
+  background-image: url("parchmentpaper.jpg");
+}
