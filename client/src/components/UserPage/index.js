@@ -1,0 +1,11 @@
+import React from "react";
+
+class UserPage extends React.Component {
+    render(){
+        return (
+            <h1>UserPage</h1>
+        )
+    }
+}
+
+export default UserPage

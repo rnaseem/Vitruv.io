@@ -6,9 +6,10 @@
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "react": "^16.6.3",
+    "react-annotation": "^2.1.6",
     "react-dom": "^16.6.3",
-    "react-scripts": "^2.1.1",
-    "react-annotation": "^2.1.6"
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "^2.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
