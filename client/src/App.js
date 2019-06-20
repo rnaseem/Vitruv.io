@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
 import VitruviAnimation from "./components/VitruviAnimation";
 import UserPage from "./components/UserPage";
-import { Annotation, ConnectorElbow, ConnectorEndDot, Note } from "react-annotation";
 import UserContext from "./context/UserContext";
 
 class App extends Component {
@@ -23,6 +22,7 @@ class App extends Component {
 export default App;
 
 
+// import { Annotation, ConnectorElbow, ConnectorEndDot, Note } from "react-annotation";
 // <>
 // <VitruviAnimation />
 // <svg height={500} width={500}>
