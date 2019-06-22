@@ -4,16 +4,24 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import VitruviAnimation from "./components/VitruviAnimation";
 import UserPage from "./components/UserPage";
 import UserContext from "./context/UserContext";
+import Login from "./components/Login";
+import SignUp from "./components/SignUp";
+import Nav from "./components/Nav";
+
 
 class App extends Component {
+
   render() {
     return (
       <Router>
+        <Nav />
         <Switch>
-          <Route path component={VitruviAnimation}/>
-          <ProtectedRoute exact path="/user" component={UserPage.js}/> 
+          <Route path="/" component={VitruviAnimation} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={SignUp} />
+          <ProtectedRoute exact path="/user" component={UserPage.js} />
         </Switch>
-       
+
       </Router>
     );
   }
