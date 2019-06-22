@@ -39,20 +39,3 @@ class Nav extends React.Component {
 }
 export default Nav;
 
-
-
-
-// const Nav = (props) => (
-//     <>
-//     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-//         <button className="navbar-brand" id="login" href="" onClick={props.onClick}>Login</button>
-//         {/* <button className="navbar-brand" id="signUp" href="" onClick={props.onClick}>Sign Up</button> */}
-//         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-//             <span className="navbar-toggler-icon">Login</span>
-//         </button>
-//     </nav>
-//     <Login />
-//     </>
-// )
-
-// export default Nav;

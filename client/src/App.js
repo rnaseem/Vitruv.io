@@ -21,7 +21,6 @@ class App extends Component {
           <Route path="/signup" component={SignUp} />
           <ProtectedRoute exact path="/user" component={UserPage.js} />
         </Switch>
-
       </Router>
     );
   }
