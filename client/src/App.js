@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
 import VitruviAnimation from "./components/VitruviAnimation";
 import UserPage from "./components/UserPage";
@@ -10,8 +10,17 @@ import Nav from "./components/Nav";
 
 
 class App extends Component {
+  state = {
+    user: null
+  }
+
+  setUser = (user) => {
+    this.setState({ user });
+  }
 
   render() {
+    const { user } = this.state;
+    const setUser = this.setUser;
     return (
       <Router>
         <Nav />
@@ -19,7 +28,9 @@ class App extends Component {
           <Route path="/" component={VitruviAnimation} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={SignUp} />
-          <ProtectedRoute exact path="/user" component={UserPage.js} />
+          <UserContext.Provider value={{ setUser, user }}>
+            <ProtectedRoute exact path="/user" component={UserPage} />
+          </UserContext.Provider>
         </Switch>
       </Router>
     );
