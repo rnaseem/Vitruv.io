@@ -28,8 +28,8 @@ class Nav extends React.Component {
         return (
             <>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <a className="navbar-brand" id="loginLink" href="" onClick={this.handleLoginShow}>Login</a>
-                    <a className="navbar-brand" id="signUpLink" href="" onClick={this.handleSignUpShow}>Sign Up</a>
+                    <a className="navbar-brand" id="loginLink" href="#" onClick={this.handleLoginShow}>Login</a>
+                    <a className="navbar-brand" id="signUpLink" href="#" onClick={this.handleSignUpShow}>Sign Up</a>
                 </nav>
                 <Login />
                 <SignUp />

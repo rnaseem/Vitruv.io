@@ -1,13 +1,37 @@
 import React from "react";
+import UserContext from "../../context/UserContext";
+import Auth from "../utils/Auth";
+import {withRouter} from "react-router-dom";
+
 
 class Login extends React.Component {
-    // state={
+    static contextType = UserContext;
 
-    // }
+    state = {
+        email: "",
+        password: ""
+    }
+
+    handleChange = (e) => {
+        const { name, value } = e.target;
+        this.setState({ [name]: value });
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        const { username, password } = this.state;
+        if (username && password) {
+            Auth.logIn(username, password, (res) => {
+                this.context.setUser(res);
+                this.props.history.push("/");
+            });
+        }
+    }
+
     render() {
         return (
             <>
-                <div className="modal" tabindex="-1" role="dialog" id="loginModal">
+                <div className="modal" role="dialog" id="loginModal">
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
@@ -17,20 +41,30 @@ class Login extends React.Component {
                                 </button>
                             </div>
                             <div className="modal-body">
-                                <form id="loginForm">
+                                <form id="loginForm" onSubmit={this.handleSubmit}>
                                     <div className="form-group">
-                                        <label for="exampleInputEmail1">Email address</label>
-                                        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+                                        <label htmlFor="loginEmail" 
+                                       >Email address</label>
+                                        <input 
+                                        type="email" 
+                                        className="form-control" 
+                                        id="loginEmail" 
+                                        aria-describedby="emailHelp" 
+                                        placeholder="Enter email"
+                                        value={this.state.email}
+                                        onChange={this.handleChange}
+                                        />
                                     </div>
                                     <div className="form-group">
-                                        <label for="exampleInputPassword1">Password</label>
-                                        <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
+                                        <label htmlFor="loginPassword" 
+                                        value={this.state.password}
+                                        onChange={this.handleChange}>Password</label>
+                                        <input type="password" className="form-control" id="loginPassword" placeholder="Password" />
                                     </div>
-                                    {/* <button type="submit" className="btn btn-primary">Submit</button> */}
+                                    <button type="submit" className="btn btn-primary">Login</button>
                                 </form>
                             </div>
                             <div className="modal-footer">
-                                <button type="submit" className="btn btn-primary" for="loginForm">Login</button>
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
                         </div>
@@ -41,4 +75,4 @@ class Login extends React.Component {
     }
 }
 
-export default Login
+export default withRouter(Login);
