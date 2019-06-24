@@ -27,7 +27,7 @@ class Nav extends React.Component {
     render() {
         return (
             <>
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <nav className="navbar navbar-expand-lg navbar-light ">
                     <a className="navbar-brand" id="loginLink" href="#" onClick={this.handleLoginShow}>Login</a>
                     <a className="navbar-brand" id="signUpLink" href="#" onClick={this.handleSignUpShow}>Sign Up</a>
                 </nav>
