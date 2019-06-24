@@ -2,18 +2,19 @@ const jwt = require("jsonwebtoken");
 const authWare = require("../middleware/authware");
 const db = require("../models");
 
+
 module.exports = function (app) {
-	app.post("/api/signup", function (req, res) {
-		db.User.create(req.body).then(function (result) {
-			res.json({ message: "Virtuv.io account created" });
-		}).catch(function (err) {
-			res.status(500).json({ error: err.message });
+		app.post("/api/signup", function (req, res) {
+			db.User.create(req.body).then(function (result) {
+				res.json({ message: "Virtuv.io account created" });
+			}).catch(function (err) {
+				res.status(500).json({ error: err.message });
+			});
 		});
-	});
 
 	app.get("/api/users", function (req,res) {
 		db.User.find({}).then(function(users){
-			res.json('Hello World');
+			res.json(users);
 		});
 	});
 

@@ -10,7 +10,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Serve up static assets (usually on heroku)
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/virtuviodb", { useNewUrlParser: true, 'useCreateIndex': true});
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/virtuviodb", { useNewUrlParser: true});
 
 const connection = mongoose.connection;
 
