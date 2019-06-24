@@ -1,8 +1,10 @@
 const express = require("express");
 const path = require("path");
+const mongoose = require("mongoose");
+// const bodyparser = require("body-parser");
+// const cors = require("cors");
 const PORT = process.env.PORT || 3001;
 const app = express();
-
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -11,8 +13,15 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-// Define API routes here
+mongoose.connect("mongodb://localhost/virtuviodb", { useNewUrlParser: true });
+const connection = mongoose.connection;
 
+connection.once("open", function(){
+  console.log("MongoDB connected")
+})
+
+// Define API routes here
+// require("./routes/api-routes")(app);
 // Send every other request to the React app
 // Define any API routes before this runs
 app.get("*", (req, res) => {

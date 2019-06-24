@@ -44,9 +44,16 @@ class Login extends React.Component {
                                 <form id="loginForm" onSubmit={this.handleSubmit}>
                                     <div className="form-group">
                                         <label htmlFor="loginEmail" 
+                                       >Email address</label>
+                                        <input 
+                                        type="email" 
+                                        className="form-control" 
+                                        id="loginEmail" 
+                                        aria-describedby="emailHelp" 
+                                        placeholder="Enter email"
                                         value={this.state.email}
-                                        onChange={this.handleChange}>Email address</label>
-                                        <input type="email" className="form-control" id="loginEmail" aria-describedby="emailHelp" placeholder="Enter email" />
+                                        onChange={this.handleChange}
+                                        />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="loginPassword" 

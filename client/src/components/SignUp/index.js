@@ -2,7 +2,37 @@ import React from "react";
 
 class SignUp extends React.Component {
 
-    
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            fullName: "",
+            email: "",
+            password: "",
+            passwordConfirm: ""
+        }
+    }
+
+    handleChange = (e) => {
+        const { name, value } = e.target;
+        this.setState({ [name]: value });
+    }
+    handleSubmit(e) {
+        e.preventDefault();
+        const { password, passwordConfirm } = this.state;
+        if (password !== passwordConfirm) {
+            this.setState({
+                password: null
+            })
+        } else {
+            this.setState({
+                fullName: "",
+                email: "",
+                password: "",
+                passwordConfirm: ""
+            })
+        }
+    }
     render() {
         return (
             <>
@@ -16,22 +46,54 @@ class SignUp extends React.Component {
                                 </button>
                             </div>
                             <div className="modal-body">
-                                <form id="signUpForm">
-                                <div className="form-group">
+                                <form id="signUpForm" onSubmit={this.handleSubmit}>
+                                    <div className="form-group">
                                         <label htmlFor="fullName">Full Name</label>
-                                        <input type="input" className="form-control" id="fullName" placeholder="Enter Full Name" />
+                                        <input
+                                            name="fullName"
+                                            type="input"
+                                            className="form-control"
+                                            id="fullName"
+                                            placeholder="Enter Full Name"
+                                            value={this.state.fullName}
+                                            onChange={this.handleChange}
+                                        />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="signUpEmail">Email address</label>
-                                        <input type="email" className="form-control" id="signUpEmail" aria-describedby="emailHelp" placeholder="Enter email" />
+                                        <input
+                                            name="email"
+                                            type="email"
+                                            className="form-control"
+                                            id="signUpEmail"
+                                            aria-describedby="emailHelp"
+                                            placeholder="Enter email"
+                                            value={this.state.email}
+                                            onChange={this.handleChange}
+                                        />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="signUpPassword">Password</label>
-                                        <input type="password" className="form-control" id="signUpPassword" placeholder="Password" />
+                                        <input
+                                            name="password"
+                                            type="password"
+                                            className="form-control"
+                                            id="signUpPassword"
+                                            placeholder="Password"
+                                            value={this.state.password}
+                                            onChange={this.handleChange}
+                                        />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="passwordConfirm">Retype Password</label>
-                                        <input type="password" className="form-control" id="passwordConfirm" placeholder="Retype Password" />
+                                        <input
+                                            name="passwordConfirm"
+                                            type="password"
+                                            className="form-control"
+                                            id="passwordConfirm"
+                                            placeholder="Retype Password"
+                                            value={this.state.passwordConfirm}
+                                            onChange={this.handleChange} />
                                     </div>
                                     <button type="submit" className="btn btn-primary">Submit</button>
                                 </form>
