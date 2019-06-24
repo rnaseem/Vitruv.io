@@ -5,11 +5,13 @@ body {
 }
 
 svg {
+  z-index: 5;
   position: relative;
-  z-index: 10;
+  top: 0
 }
 
-#root {
-  min-height: 100vh;
-  background-image: url("parchmentpaper.jpg");
+html {
+  background: url("parchmentpaper.jpg") no-repeat center center fixed;
+  width: 100%;
+  background-size: cover;
 }
