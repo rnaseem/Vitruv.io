@@ -11,9 +11,9 @@ module.exports = function (app) {
 		});
 	});
 
-	app.get("api/users", function (req,res) {
+	app.get("/api/users", function (req,res) {
 		db.User.find({}).then(function(users){
-			res.json(users);
+			res.json('Hello World');
 		});
 	});
 
@@ -41,12 +41,12 @@ module.exports = function (app) {
 
 	app.get("/api/protected", authWare, function (req, res) {
 		const user = req.user;
-		res.json({ message: user.username + ", you should only see this if you're authenticated." });
+		res.json({ message: user.username + "authenticated" });
 	});
 
 	app.get("/api/public", function (req, res) {
 		res.json({
-			message: "This is just boring, public data."
+			message: "public"
 		});
 	});
 };

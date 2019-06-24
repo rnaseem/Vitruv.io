@@ -8,10 +8,10 @@ const UserSchema = new Schema({
         trim: true,
         required: "Email is Required"
     },
-    username: {
+    fullName: {
         type: String,
         trim: true,
-        required: "Username is Required",
+        required: "name is Required",
         index: {
             unique: true
         }
