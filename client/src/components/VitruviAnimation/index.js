@@ -72,14 +72,12 @@ class VitruviAnimation extends React.Component {
         </video>
 
 
-        <div class="content">
-
+<div class="content">
         <svg 
       version="1.1"
       id="svg5286"
       width={1920}
       height={1080}
-
     >
       <defs id="defs5290">
         <filter
@@ -295,10 +293,8 @@ class VitruviAnimation extends React.Component {
         onMouseOut={() => this.unhoverLeftArm()}
       />
     </svg>
-        
-        
-        </div>
-        </>)
+</div>
+ </>)
     
 }
 }
