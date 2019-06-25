@@ -19,9 +19,9 @@ module.exports = function (app) {
 	});
 
 	app.post("/api/authenticate", function (req, res) {
-		const { username, password } = req.body;
-		db.User.findOne({ username: username }).then(function (dbUser) {
-			if (!dbUser) return res.status(401).json({ message: "Username or password is incorrect." });
+		const { email, password } = req.body;
+		db.User.findOne({ email: email }).then(function (dbUser) {
+			if (!dbUser) return res.status(401).json({ message: "email or password is incorrect." });
 			if (dbUser.comparePassword(password)) {
 
 				const token = jwt.sign({
@@ -30,19 +30,19 @@ module.exports = function (app) {
 
 				res.json({
 					id: dbUser._id,
-					username: dbUser.username,
+					email: dbUser.email,
 					token: token
 				});
 
 			} else {
-				res.status(401).json({ message: "Username or password is incorrect." });
+				res.status(401).json({ message: "email or password is incorrect." });
 			}
 		})
 	});
 
 	app.get("/api/protected", authWare, function (req, res) {
 		const user = req.user;
-		res.json({ message: user.username + "authenticated" });
+		res.json({ message: user.email + "authenticated" });
 	});
 
 	app.get("/api/public", function (req, res) {
