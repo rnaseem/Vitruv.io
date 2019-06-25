@@ -59,6 +59,20 @@ class VitruviAnimation extends React.Component {
       unhoverTorso = () => {
         this.setState({fillOpacityTorso: "0"})
       }
+
+
+
+
+
+      symptomModal = () => {
+        // e.preventDefault();
+       
+            return (
+                <div className="card">adsfadafd;jfads;jfads;</div>
+            )
+        
+      }
+    
       
     
     render() {
@@ -72,7 +86,7 @@ class VitruviAnimation extends React.Component {
         </video>
 
 
-<div class="content">
+<div className="content">
         <svg 
       version="1.1"
       id="svg5286"
@@ -256,6 +270,7 @@ class VitruviAnimation extends React.Component {
         id="path5308"
         onMouseOver={() => this.hoverHead()}
         onMouseOut={() => this.unhoverHead()}
+        onClick={() => this.symptomModal()}
       />
       <path
       id="feet"
