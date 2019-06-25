@@ -1,13 +1,10 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const BodyPartSchema = new Schema({
-    name: {
-        type: String
-    },
-    id: {
-        type: Number
-    }
+const BodyParts = new Schema({
+  name: {
+    type: String
+  }
 });
 
-module.exports = mongoose.model("Body", BodyPartsSchema);
+module.exports = mongoose.model("Body", BodyParts);

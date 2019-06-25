@@ -1,6 +1,6 @@
 module.exports = {
-    User: require("./User"),
-    BodyPart: require("./BodyPart"),
-    Symptoms: require("./Symptoms"),
-    Diagnosis: require("./Diagnosis")
+  User: require("./User"),
+  Body: require("./bodyPart"),
+  Symptoms: require("./symptoms"),
+  Diagnosis: require("./diagnosis")
 }
