@@ -13,7 +13,7 @@ const DiagnosisSchema = new Schema({
   bodyPart: [
     {
       type: Schema.Types.ObjectId,
-      ref: "BodyPart"
+      ref: "bodyPart"
     }
   ],
   symptoms: [
