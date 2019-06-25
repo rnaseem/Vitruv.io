@@ -2,6 +2,9 @@ import React from "react";
 import UserContext from "../../context/UserContext";
 import Auth from "../utils/Auth";
 import {withRouter} from "react-router-dom";
+import axios from "axios";
+// import UserContext from "./context/UserContext";
+import UserPage from "../UserPage";
 
 
 class Login extends React.Component {
@@ -22,8 +25,19 @@ class Login extends React.Component {
         const { username, password } = this.state;
         if (username && password) {
             Auth.logIn(username, password, (res) => {
-                this.context.setUser(res);
-                this.props.history.push("/");
+                let user = {
+                    email: this.state.email,
+                    password: this.state.password
+                }
+                // this.context.setUser(res);
+                // this.props.history.push("/");
+                axios.post("/api/authenticate",  user)
+                .then(data=> {
+                    console.log(data)
+
+                }).catch(err=>{
+                    console.log("Err", err.message)
+                })
             });
         }
     }
@@ -46,6 +60,7 @@ class Login extends React.Component {
                                         <label htmlFor="loginEmail" 
                                        >Email address</label>
                                         <input 
+                                        name="email"
                                         type="email" 
                                         className="form-control" 
                                         id="loginEmail" 
@@ -56,7 +71,8 @@ class Login extends React.Component {
                                         />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="loginPassword" 
+                                        <label htmlFor="loginPassword"
+                                        name="password" 
                                         value={this.state.password}
                                         onChange={this.handleChange}>Password</label>
                                         <input type="password" className="form-control" id="loginPassword" placeholder="Password" />
