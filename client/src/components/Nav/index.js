@@ -4,7 +4,6 @@ import SignUp from "../SignUp";
 import "./style.css";
 const $ = window.$;
 
-
 class Nav extends React.Component {
 
     handleSignUpShow(e) {
