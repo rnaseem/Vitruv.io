@@ -1,76 +1,89 @@
 import React from "react";
-import sympts from "./symptoms.json";
 import Checkbox from "../Checkbox";
+import sympts from "./symptoms.json"
 import axios from "axios";
 
+// bodyData.data[0].head.symptoms[element]
 
-// this is where the API call will go, Im getting the IDs here to display further down
+let bodyData = {};
+let arrOfHead = [];
+
+axios.get("/api/body").then((res) => {
+    bodyData = res;
+    for (let i = 0; i < bodyData.data[0].head.symptoms.length; i++) {
+        arrOfHead.push(bodyData.data[0].head.symptoms[i].name)
+    }
+
+})
+
+
 const symptoms = sympts.map(function (sympt) {
     let symptID = sympt.id
     return symptID
-    // axios.get("/api/symptoms")
-    // .then() 
 });
 
 
 class Symptom extends React.Component {
+
     state = {
-        checkboxes: symptoms.reduce(
-          (symptoms, symptom) => ({
-            ...symptoms,
-            [symptom]: false
-          }),
-          {}
-        )
-      };
-    
-      selectAllCheckboxes = isSelected => {
+        checkboxes: arrOfHead.reduce(
+            (arrOfHead, symptom) => ({
+                ...arrOfHead,
+                [symptom]: false
+            }),
+            {}
+        ),
+        bodyData: {}
+    };
+
+
+    selectAllCheckboxes = isSelected => {
         Object.keys(this.state.checkboxes).forEach(checkbox => {
-          this.setState(prevState => ({
-            checkboxes: {
-              ...prevState.checkboxes,
-              [checkbox]: isSelected
-            }
-          }));
+            this.setState(prevState => ({
+                checkboxes: {
+                    ...prevState.checkboxes,
+                    [checkbox]: isSelected
+                }
+            }));
         });
-      };
-    
-    
-      handleCheckboxChange = event => {
-        const { name } = event.target;   
+    };
+
+
+    handleCheckboxChange = event => {
+        const { name } = event.target;
         this.setState(prevState => ({
-          checkboxes: {
-            ...prevState.checkboxes,
-            [name]: !prevState.checkboxes[name]
-          }
+            checkboxes: {
+                ...prevState.checkboxes,
+                [name]: !prevState.checkboxes[name]
+            }
         }));
-      };
-    
-      handleFormSubmit = event => {
+    };
+
+    handleFormSubmit = event => {
         event.preventDefault();
-    
+
         Object.keys(this.state.checkboxes)
-          .filter(checkbox => this.state.checkboxes[checkbox])
-          .forEach(checkbox => {
+            .filter(checkbox => this.state.checkboxes[checkbox])
+            .forEach(checkbox => {
 
-// this is where the ids can be seen in the console.
-            console.log(checkbox, "is selected.");
+                // this is where the ids can be seen in the console.
+                console.log(checkbox, "is selected.");
 
 
 
-          });
-      };
-    
-      makeCheckbox = symptomID => (
+            });
+    };
+
+    makeCheckbox = symptomID => (
         <Checkbox
-          label={symptomID}
-          isSelected={this.state.checkboxes[symptomID]}
-          onCheckboxChange={this.handleCheckboxChange}
-          key={symptomID}
+            label={symptomID}
+            isSelected={this.state.checkboxes[symptomID]}
+            onCheckboxChange={this.handleCheckboxChange}
+            key={symptomID}
         />
-      );
-    
-      makeCheckboxes = () => symptoms.map(this.makeCheckbox);
+    );
+
+    makeCheckboxes = () => arrOfHead.map(this.makeCheckbox);
 
     render() {
         return (
@@ -87,7 +100,7 @@ class Symptom extends React.Component {
                             <p>Check all symptoms that apply</p>
                             <div class="headAndFace-list">
                                 <form className="" id="symptomForm" onSubmit={this.handleFormSubmit}>
-                                {this.makeCheckboxes()}
+                                    {this.makeCheckboxes()}
                                     <button type="submit" className="btn btn-primary">Diagnose</button>
                                 </form>
                             </div>
