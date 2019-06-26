@@ -6,11 +6,10 @@ import axios from "axios";
 
 // this is where the API call will go, Im getting the IDs here to display further down
 const symptoms = sympts.map(function (sympt) {
-    // let symptID = sympt.id
-    // return symptID
-    axios.get("/api/symptoms")
-    .then()
-    let symptId = 
+    let symptID = sympt.id
+    return symptID
+    // axios.get("/api/symptoms")
+    // .then() 
 });
 
 

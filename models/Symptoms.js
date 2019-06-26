@@ -5,6 +5,9 @@ const SymptomsSchema = new Schema({
   name: {
     type: String
   }
+  // _id: {
+  //   type: Number
+  // }
 });
 
 module.exports = mongoose.model("Symptoms", SymptomsSchema);

@@ -7,21 +7,12 @@ const DiagnosisSchema = new Schema({
     type: String,
     unique: true
   },
-  commoneName: {
+  commonName: {
     type: String
   },
-  bodyPart: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "BodyPart"
-    }
-  ],
-  symptoms: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Symptoms"
-    }
-  ]
+  symptomId: {
+    type: Number
+  }
 });
 
 module.exports = mongoose.model("Diagnosis", DiagnosisSchema)
