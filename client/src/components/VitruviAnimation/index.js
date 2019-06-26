@@ -1,6 +1,8 @@
 import React from "react"
 import "./style.css";
 import vitruvianMan from "./vitruvianManShortened.mp4";
+import SymptomModal from "../SymptomModal"
+const $ = window.$;
 
 class VitruviAnimation extends React.Component {
   
@@ -59,6 +61,17 @@ class VitruviAnimation extends React.Component {
       unhoverTorso = () => {
         this.setState({fillOpacityTorso: "0"})
       }
+
+
+
+
+
+      handleSymptomModal = (e) => {
+        e.preventDefault();
+        $("#symptomModal").modal("show");
+        
+      }
+    
       
     
     render() {
@@ -256,6 +269,7 @@ class VitruviAnimation extends React.Component {
         id="path5308"
         onMouseOver={() => this.hoverHead()}
         onMouseOut={() => this.unhoverHead()}
+        onClick={(e) => this.handleSymptomModal(e)}
       />
       <path
       id="feet"
@@ -294,6 +308,7 @@ class VitruviAnimation extends React.Component {
       />
     </svg>
 </div>
+<SymptomModal />
  </>)
     
 }
