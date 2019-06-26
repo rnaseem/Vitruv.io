@@ -53,7 +53,6 @@ module.exports = function (app) {
 
 	app.get("/api/body", function (req, res) {
 		db.Body.find({})
-			.populate('Symptoms')
 			.then(function (data) {
 				res.json(data);
 			}).catch(err => {
