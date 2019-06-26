@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-// let ObjectId = mongoose.Schema.Types.ObjectId;
+
 
 const DiagnosisSchema = new Schema({
   name: {
@@ -13,16 +13,15 @@ const DiagnosisSchema = new Schema({
   bodyPart: [
     {
       type: Schema.Types.ObjectId,
-      ref: "bodyPart"
+      ref: "BodyPart"
     }
   ],
   symptoms: [
     {
       type: Schema.Types.ObjectId,
-      ref: "symptoms"
+      ref: "Symptoms"
     }
   ]
 });
-
 
 module.exports = mongoose.model("Diagnosis", DiagnosisSchema)

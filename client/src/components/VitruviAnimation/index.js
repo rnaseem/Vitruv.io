@@ -72,7 +72,7 @@ class VitruviAnimation extends React.Component {
         </video>
 
 
-<div class="content">
+<div className="content">
         <svg 
       version="1.1"
       id="svg5286"
