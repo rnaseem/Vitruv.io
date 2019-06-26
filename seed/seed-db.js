@@ -65,6 +65,46 @@ const diagnosisSeed = [
     name: 'Ear injury with foreign body',
     commonName: 'Foreign body in ear'
   },
+  {
+    name: 'Headache',
+    commonName: 'Cephalalgia'
+  },
+  {
+    name: 'Sick headache',
+    commonName: 'Migraine'
+  },
+  {
+    name: 'Inflammation of paranasal sinuses',
+    commonName: 'Sinusitis'
+  },
+  {
+    name: 'Cluster headache',
+    commonName: "Bing's erythroprosopalgia"
+  },
+  {
+    name: 'Flu',
+    commonName: 'Influenza'
+  },
+  {
+    name: 'Cold',
+    commonName: 'Common Cold'
+  },
+  {
+    name: 'Hay Fever',
+    commonName: 'Allergic rhinitis'
+  },
+  {
+    name: 'Concussion',
+    commonName: 'Mild traumatic brain injury'
+  },
+  {
+    name: 'Green cataract',
+    commonName: 'Glaucoma'
+  },
+  {
+    name: 'Sleep disorder',
+    commonName: 'Somnipathy'
+  },
 
 ]
 
