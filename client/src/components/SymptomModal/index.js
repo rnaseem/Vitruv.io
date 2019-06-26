@@ -1,12 +1,16 @@
 import React from "react";
 import sympts from "./symptoms.json";
 import Checkbox from "../Checkbox";
+import axios from "axios";
 
 
 // this is where the API call will go, Im getting the IDs here to display further down
 const symptoms = sympts.map(function (sympt) {
-    let symptID = sympt.id
-    return symptID
+    // let symptID = sympt.id
+    // return symptID
+    axios.get("/api/symptoms")
+    .then()
+    let symptId = 
 });
 
 
