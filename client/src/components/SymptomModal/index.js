@@ -62,12 +62,12 @@ class Symptom extends React.Component {
           });
       };
     
-      makeCheckbox = symptomName => (
+      makeCheckbox = symptomID => (
         <Checkbox
-          label={symptomName}
-          isSelected={this.state.checkboxes[symptomName]}
+          label={symptomID}
+          isSelected={this.state.checkboxes[symptomID]}
           onCheckboxChange={this.handleCheckboxChange}
-          key={symptomName}
+          key={symptomID}
         />
       );
     
