@@ -8,9 +8,9 @@ const BodyParts = new Schema({
   symptoms: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Symptoms"
+      ref: "symptoms"
     }
-  ]
+  ],
   // id: {
   //   type: Number
   // }

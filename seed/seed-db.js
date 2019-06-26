@@ -1,26 +1,48 @@
 const mongoose = require("mongoose");
 const db = require("../models");
+const Schema = mongoose.Schema;
 
 mongoose.connect(
   process.env.MONGODB_URI ||
   "mongodb://localhost/virtuviodb"
 );
 
-const bodySeed = [
+const symptomSeed = [
   {
-    name: 'Head',
-    // _id: 1
-    symptoms: [
-      {
-        type: 1,
-        ref: "Symptoms"
-      },
-      {
-        type: 2,
-        ref: "Symptoms"
-      },
-      {
-        type: 3,
+    name: 'Eye pain'
+  },
+  {
+    name: 'Burning eyes'
+  },
+  {
+    name: 'Drooping eyelid'
+  },
+  {
+    name: 'itchy throat'
+  },
+  {
+    name: 'raspy/dry throat'
+  },
+  {
+    name: 'bothersome noise'
+  }
+]
+
+const bodySeed = [
+{
+  name: 'Head',
+  // _id: 1
+  symptoms: [
+    {
+      type: Schema.Types.ObjectId(1),
+      ref: "Symptoms"
+    },
+    {
+      type: Schema.Types.ObjectId(2),
+      ref: "Symptoms"
+    },
+    {
+        type: Schema.Types.ObjectId(3),
         ref: "Symptoms"
       }
     ]
@@ -47,32 +69,7 @@ const bodySeed = [
   },
 ];
 
-const symptomSeed = [
-  {
-    name: 'Eye pain',
-    _id: 1
-  },
-  {
-    name: 'Burning eyes',
-    _id: 2
-  },
-  {
-    name: 'Drooping eyelid',
-    _id: 3
-  },
-  {
-    name: 'itchy throat',
-    _id: 4
-  },
-  {
-    name: 'raspy/dry throat',
-    _id: 5
-  },
-  {
-    name: 'bothersome noise',
-    _id: 6
-  }
-]
+
 
 // const diagnosisSeed = [
 //   {
@@ -103,11 +100,11 @@ const symptomSeed = [
 // ]
 
 
-db.Body
+db.Symptoms
   .remove({})
-  .then(() => db.Body.collection.insertMany(bodySeed))
+  .then(() => db.Symptoms.collection.insertMany(symptomSeed))
   .then(data => {
-    console.log(data.result.n + " parts inserted!");
+    console.log(data.result.n + " symptoms inserted!");
     process.exit(0);
   })
   .catch(err => {
@@ -115,11 +112,12 @@ db.Body
     process.exit(1);
   });
 
-db.Symptoms
+db.Body
   .remove({})
-  .then(() => db.Symptoms.collection.insertMany(symptomSeed))
+  .then(() => db.Body.collection.insertMany(bodySeed))
   .then(data => {
-    console.log(data.result.n + " symptoms inserted!");
+    console.log(data.result.n + " parts inserted!");
+    console.log("db.body data: "+data)
     process.exit(0);
   })
   .catch(err => {
