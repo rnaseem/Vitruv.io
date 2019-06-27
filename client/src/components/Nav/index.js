@@ -2,31 +2,37 @@ import React from "react";
 import Login from "../Login";
 import SignUp from "../SignUp";
 import UserContext from "../../context/UserContext";
+import Nav from "react-bootstrap/Nav";
 import "./style.css";
 const $ = window.$;
+// import Modal from "react-bootstrap/Modal";
 
-class Nav extends React.Component {
+class NavBar extends React.Component {
     state = {
-
+        show: false
     }
+    handleClose() {
+        this.setState({ show: false });
+      }
+    
+      handleShow() {
+        this.setState({ show: true });
+      }
+    // handleSignUpShow(e) {
+    //     e.preventDefault();
+    //     $("#signUpModal").modal("show");
+    // }
+    // handleSignUpClose() {
+    //     $("#loginModal").modal("hide");
+    // }
 
-    handleSignUpShow(e) {
-        e.preventDefault();
-        $("#signUpModal").modal("show");
-    }
-    handleSignUpClose() {
-        $("#loginModal").modal("hide");
-    }
-
-    handleLoginShow(e) {
-        e.preventDefault();
-        $("#loginModal").modal("show");
-    }
-    handleLoginClose() {
-        $("#loginModal").modal("hide");
-    }
-
-
+    // handleLoginShow(e) {
+    //     e.preventDefault();
+    //     $("#loginModal").modal("show");
+    // }
+    // handleLoginClose() {
+    //     $("#loginModal").modal("hide");
+    // }
     render() {
         return (
             <UserContext.Consumer>
@@ -34,12 +40,12 @@ class Nav extends React.Component {
                     return (!context.user) ?
                         (
                             <>
-                                <nav className="navbar navbar-expand-lg navbar-light">
-                                    <a className="navbar-brand" id="loginLink" href="#" onClick={this.handleLoginShow}>Login</a>
-                                    <a className="navbar-brand" id="signUpLink" href="#" onClick={this.handleSignUpShow}>Sign Up</a>
-                                </nav>
-                                <Login />
-                                <SignUp />
+                                <Nav className="navbar navbar-expand-lg navbar-light">
+                                    <a className="navbar-brand" id="loginLink" href="#" onClick={this.handleShow}>Login</a>
+                                    <a className="navbar-brand" id="signUpLink" href="#" onClick={this.handleShow}>Sign Up</a>
+                                </Nav>
+                                <Login show={this.state.show}/>
+                                <SignUp show={this.state.show}/>
                             </>
                         )
                         :
@@ -53,5 +59,5 @@ class Nav extends React.Component {
         );
     }
 };
-export default Nav;
+export default NavBar;
 

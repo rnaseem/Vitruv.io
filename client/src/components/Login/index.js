@@ -3,6 +3,10 @@ import UserContext from "../../context/UserContext";
 import Auth from "../utils/Auth";
 import {withRouter} from "react-router-dom";
 import axios from "axios";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Modal from "react-bootstrap/Modal";
+import Form from "react-bootstrap/Form";
 // import UserContext from "./context/UserContext";
 import UserPage from "../UserPage";
 
@@ -46,20 +50,20 @@ class Login extends React.Component {
         }
     }
 
-    render() {
+    render(props) {
         return (
             <>
-                <div className="modal" role="dialog" id="loginModal">
-                    <div className="modal-dialog" role="document">
-                        <div className="modal-content">
-                            <div className="modal-header">
+                <Modal className="modal" role="dialog" id="loginModal" show={this.props.show}>
+                    <Modal.Dialog className="modal-dialog" role="document">
+                        <Modal.Content className="modal-content">
+                            <Modal.Header className="modal-header">
                                 <h5 className="modal-title">Login</h5>
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <Button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div className="modal-body">
-                                <form id="loginForm" onSubmit={this.handleSubmit}>
+                                </Button>
+                            </Modal.Header>
+                            <Modal.Body className="modal-body">
+                                <Form id="loginForm" onSubmit={this.handleSubmit}>
                                     <div className="form-group">
                                         <label htmlFor="loginEmail" 
                                        >Email address</label>
@@ -74,7 +78,7 @@ class Login extends React.Component {
                                         onChange={this.handleChange}
                                         />
                                     </div>
-                                    <div className="form-group">
+                                    <Form.Group className="form-group">
                                         <label htmlFor="loginPassword"
                                         >Password</label>
                                         <input 
@@ -86,16 +90,16 @@ class Login extends React.Component {
                                         value={this.state.password}
                                         onChange={this.handleChange}
                                         />
-                                    </div>
-                                    <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Login</button>
-                                </form>
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                    </Form.Group>
+                                    <Button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Login</Button>
+                                </Form>
+                            </Modal.Body>
+                            <Modal.Footer className="modal-footer">
+                                <Button type="button" className="btn btn-secondary" data-dismiss="modal">Close</Button>
+                            </Modal.Footer>
+                        </Modal.Content>
+                    </Modal.Dialog>
+                </Modal>
             </>
         )
     }
