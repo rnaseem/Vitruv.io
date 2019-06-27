@@ -3,8 +3,8 @@ import axios from "axios";
 function Auth () {
 	let loggedIn = false;
 
-	function logIn (username, password, cb) {
-		axios.post("/api/authenticate", {username, password})
+	function logIn (email, password, cb) {
+		axios.post("/api/authenticate", {email, password})
 			.then(response => {
 				localStorage.setItem("token", response.data.token);
 				loggedIn = true;
