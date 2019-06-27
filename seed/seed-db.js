@@ -16,12 +16,47 @@ const bodySeed = [
         {
           name: 'Eye pain',
           _id: 1,
-          diagnosis: "conjunctivitus, cataracts, pink eye, eye death"
+          diagnosis: "Conjunctivitus, Cataracts, Pink eye, Blepharitis"
         },
         {
           name: 'Burning eyes',
           _id: 2,
-          diagnosis: "conjunctivitus, foreign object"
+          diagnosis: "Conjunctivitus, Eye corrosion"
+        },
+        {
+          name: 'Drooping eyelid',
+          _id: 3,
+          diagnosis: "conjunctivitus, cataracts, pink eye, eye death"
+        },
+        {
+          name: 'Ear ache',
+          _id: 4,
+          diagnosis: "Middle ear infection, Temporomandibular joint dysfunction(TMJ) syndrome, Tooth abcess"
+        },
+        {
+          name: 'Headache',
+          _id: 5,
+          diagnosis: "Inflammation of paranasal sinuses, Migraine, Concussion"
+        },
+        {
+          name: 'Dizziness',
+          _id: 6,
+          diagnosis: "Positional vertigo, Low blood pressure, Hyperventilation, Low blood sugar"
+        },
+        {
+          name: 'Paralysis',
+          _id: 7,
+          diagnosis: "Stroke, Disseminated sclerosis, Sarcoidosis, Meningeal tumor"
+        },
+        {
+          name: 'Lip Swelling',
+          _id: 8,
+          diagnosis: "Food allergy, Hives, Hypersensitivity reaction"
+        },
+        {
+          name: 'Memory gap',
+          _id: 9,
+          diagnosis: "Intoxication, Anxiety disorder, Alzheimer's disease"
         }
       ]
     }
