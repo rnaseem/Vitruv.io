@@ -74,7 +74,7 @@ class Symptom extends React.Component {
 
     render() {
         return (
-            <div className="modal" tabindex="-1" role="dialog" id="symptomModal">
+            <div className="modal" role="dialog" id="symptomModal">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -85,7 +85,7 @@ class Symptom extends React.Component {
                         </div>
                         <div className="modal-body">
                             <p>Check all symptoms that apply</p>
-                            <div class="headAndFace-list">
+                            <div className="headAndFace-list">
                                 <form className="" id="symptomForm" onSubmit={this.handleFormSubmit}>
                                 {this.makeCheckboxes()}
                                     <button type="submit" className="btn btn-primary">Diagnose</button>

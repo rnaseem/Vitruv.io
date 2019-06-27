@@ -24,6 +24,7 @@ class App extends Component {
     return (
       <Router>
         <Nav />
+        {console.log(user)}
         <Switch>
           <Route path="/" component={VitruviAnimation} />
           <Route path="/login" component={Login} />
@@ -34,36 +35,7 @@ class App extends Component {
         </Switch>
       </Router>
     );
-  }
-}
+  };
+};
 
 export default App;
-
-
-// import { Annotation, ConnectorElbow, ConnectorEndDot, Note } from "react-annotation";
-// <>
-// <VitruviAnimation />
-// <svg height={500} width={500}>
-//   <Annotation
-//     x={150}
-//     y={170}  
-//     dy={117}
-//     dx={162}
-//     color={"#765038"}
-//     title={"??????????????"}
-//     label={"Longer text to show text wrapping"}
-//     className="show-bg"
-//   >
-//     <ConnectorElbow >
-//       <ConnectorEndDot />
-//     </ConnectorElbow >
-//     <Note
-//       align={"middle"}
-//       orientation={"leftRight"}
-//       bgPadding={20}
-//       padding={15}
-//       titleColor={"#765038"}
-//       lineType={"vertical"} />
-//   </Annotation>
-// </svg>
-// </>
