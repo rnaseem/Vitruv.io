@@ -21,15 +21,19 @@ class Login extends React.Component {
     }
 
     handleSubmit = (e) => {
+        console.log('submit');
         e.preventDefault();
-        const { username, password } = this.state;
-        if (username && password) {
-            Auth.logIn(username, password, (res) => {
+        const { email, password } = this.state;
+        console.log(email, password)
+        if (email && password) {
+            console.log("inside")
+            Auth.logIn(email, password, (res) => {
                 let user = {
-                    email: this.state.email,
-                    password: this.state.password
+                    email,
+                    password
                 }
-                // this.context.setUser(res);
+                console.log(user)
+                this.context.setUser(res);
                 // this.props.history.push("/");
                 axios.post("/api/authenticate",  user)
                 .then(data=> {
@@ -72,12 +76,18 @@ class Login extends React.Component {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="loginPassword"
+                                        >Password</label>
+                                        <input 
+                                        type="password" 
                                         name="password" 
+                                        className="form-control" 
+                                        id="loginPassword" 
+                                        placeholder="Password" 
                                         value={this.state.password}
-                                        onChange={this.handleChange}>Password</label>
-                                        <input type="password" className="form-control" id="loginPassword" placeholder="Password" />
+                                        onChange={this.handleChange}
+                                        />
                                     </div>
-                                    <button type="submit" className="btn btn-primary">Login</button>
+                                    <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Login</button>
                                 </form>
                             </div>
                             <div className="modal-footer">

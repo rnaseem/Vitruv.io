@@ -7,10 +7,8 @@ const $ = window.$;
 
 class Nav extends React.Component {
     state = {
-        isLoggedIn: null
+
     }
-
-
 
     handleSignUpShow(e) {
         e.preventDefault();
@@ -31,11 +29,10 @@ class Nav extends React.Component {
 
     render() {
         return (
-
-<UserContext.Consumer>
+            <UserContext.Consumer>
                 {context => {
-                    if (!context.user.fullName) {
-                        return (
+                    return (!context.user) ?
+                        (
                             <>
                                 <nav className="navbar navbar-expand-lg navbar-light">
                                     <a className="navbar-brand" id="loginLink" href="#" onClick={this.handleLoginShow}>Login</a>
@@ -44,18 +41,17 @@ class Nav extends React.Component {
                                 <Login />
                                 <SignUp />
                             </>
-                        );
-                    } else {
-                        return (
+                        )
+                        :
+                        (
                             <nav className="navbar navbar-expand-lg navbar-light">
-                                <h2>Welcome, {context.user}</h2>
+                                <h2>Welcome, {context.user.email}</h2>
                             </nav>
-                        );
-                    };
-                }
-                };
+                        )
+                }}
             </UserContext.Consumer>
         );
-    }};
+    }
+};
 export default Nav;
 

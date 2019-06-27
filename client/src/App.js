@@ -10,12 +10,13 @@ import Nav from "./components/Nav";
 
 
 class App extends Component {
+  static contextType = UserContext;
   state = {
     user: null
   }
 
   setUser = (user) => {
-    this.setState({ user });
+    this.setState({ user: user });
   }
 
   render() {
@@ -23,16 +24,16 @@ class App extends Component {
     const setUser = this.setUser;
     return (
       <Router>
-        <Nav />
-        {console.log(user)}
-        <Switch>
-          <Route path="/" component={VitruviAnimation} />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={SignUp} />
-          <UserContext.Provider value={{ setUser, user }}>
-            <ProtectedRoute exact path="/user" component={UserPage} />
-          </UserContext.Provider>
-        </Switch>
+        <UserContext.Provider value={{ setUser, user }}>
+          <Nav />
+          {console.log(user)}
+          <Switch>
+            <Route path="/" component={VitruviAnimation} />
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={SignUp} />
+              <ProtectedRoute exact path="/user" component={UserPage} />
+          </Switch>
+        </UserContext.Provider>
       </Router>
     );
   };
