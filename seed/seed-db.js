@@ -26,7 +26,7 @@ const bodySeed = [
         {
           name: 'Drooping eyelid',
           _id: 3,
-          diagnosis: "conjunctivitus, cataracts, pink eye, eye death"
+          diagnosis: "Congenital ptosis, Damage to the eye muscle nerves, Myasthenia gravis"
         },
         {
           name: 'Ear ache',
@@ -60,7 +60,68 @@ const bodySeed = [
         }
       ]
     }
-  }];
+  },
+{
+  arm: {
+    name: 'arm',
+    symptoms: [
+      
+        {
+          name: 'Pain in the limbs',
+          _id: 10,
+          diagnosis: "Influenza, Infectious mononucleosis, Lack of Vitamin D"
+        },
+        {
+          name: 'Swelling in the armpits',
+          _id: 11,
+          diagnosis: "Infectious mononucleosis, Superficial form of cellulitis, Toxoplasmosis infection"
+        },
+        {
+          name: 'Tremor at rest',
+          _id: 12,
+          diagnosis: "Hyperventilation, Overproduction of Thyroid hormones, Epileptic seizures"
+        }
+      ]
+  }
+},
+{
+  abdomen: {
+    name: 'abdomen',
+    symptoms: [
+      {
+        name: 'Abdominal pain',
+        _id: 13,
+        diagnosis: "Bloated belly, Gastroenteritis, Constipation, Food poisoning"
+      },
+      {
+        name: 'Nausea',
+        _id: 13,
+        diagnosis: "Food poisoning, Gastroenteritis, Migraine, Motion sickness(Kinetosis), Lactose intolerance"
+      },
+      {
+        name: 'Reduced Appetite',
+        _id: 13,
+        diagnosis: "State of stress, Depression, Lack of supply of thyroid hormones, Sleep apnea, Inflammation of the pancreas"
+      },
+      {
+        name: 'Stomach burning',
+        _id: 13,
+        diagnosis: "Stomach ulcer, Reflux disease, Drug side effect"
+      },
+      {
+        name: 'Vomiting blood',
+        _id: 13,
+        diagnosis: "Stomach bleeding, Nosebleed, Stomach ulcer, Enlarged veins of the esophagus, Reflux disease"
+      },
+      {
+        name: 'Weight gain',
+        _id: 13,
+        diagnosis: "Eating disorder, Sleeping disorder, Depression, Constipation"
+      }
+    ]
+  }
+}
+];
 
 db.Body
   .remove({})
