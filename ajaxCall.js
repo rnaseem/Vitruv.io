@@ -1,4 +1,22 @@
-function diagnose() {
+import axios from "axios";
+
+export default {
+    getDiagnosis: function() {
+        return (
+            
+        )
+    }
+}
+
+
+
+
+
+
+
+
+export default { 
+    diagnose: function() {
 
     var symptoms = [];
 
@@ -32,3 +50,5 @@ $('#headAndFace-list :checkbox').change(function()
         console.log(response);
     });
 };
+
+}
