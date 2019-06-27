@@ -32,7 +32,7 @@ class Nav extends React.Component {
     render() {
         return (
 
-            <UserContext.Consumer>
+<UserContext.Consumer>
                 {context => {
                     if (!context.user.fullName) {
                         return (
