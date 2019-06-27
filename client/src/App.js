@@ -28,10 +28,11 @@ class App extends Component {
           <Nav />
           {console.log(user)}
           <Switch>
+            <Route exact path='/user' component={UserPage} />
             <Route path="/" component={VitruviAnimation} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
-              <ProtectedRoute exact path="/user" component={UserPage} />
+              {/* <ProtectedRoute exact path="/user" component={UserPage} /> */}
           </Switch>
         </UserContext.Provider>
       </Router>

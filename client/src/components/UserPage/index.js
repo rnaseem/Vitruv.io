@@ -9,18 +9,26 @@ class UserPage extends React.Component {
         4. mount answers onto table document-style component
         5. return document converted into pdf
     */
-
+   
     render() {
         return (
             <div className="container" id="userContainer">
                 <div className="row">
                     <h1>User Page</h1>
                 </div>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Example textarea</label>
+                <div className="form-group">
+                    <label for="exampleFormControlTextarea1">Personal Notes</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
+                <div>
+                    <button>Save Note</button>
+                </div>
+                <div>
+                    <div id="savedNotes"></div>
+                </div>
+                <div>
                 <button>send to form component</button>
+                </div>
             </div>
         )
     }

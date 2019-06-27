@@ -2,5 +2,9 @@
     background-color: #ffffff;
     border-radius: 5%;
     margin: 5rem;
-    padding: 5rem;
+    padding: 2rem;
+}
+nav {
+    /* background-color: #ffffff; */
+    width: 100%;
 }
