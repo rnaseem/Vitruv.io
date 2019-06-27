@@ -7,7 +7,7 @@ import UserContext from "./context/UserContext";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Nav from "./components/Nav";
-
+import VitruvianWoman from "./components/VitruvianWoman"
 
 class App extends Component {
   static contextType = UserContext;
@@ -31,6 +31,7 @@ class App extends Component {
             <Route path="/" component={VitruviAnimation} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
+            <Route exact path="/VitruvianWoman" component={VitruvianWoman} />
               <ProtectedRoute exact path="/user" component={UserPage} />
           </Switch>
         </UserContext.Provider>

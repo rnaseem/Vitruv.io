@@ -3,6 +3,7 @@ import Login from "../Login";
 import SignUp from "../SignUp";
 import UserContext from "../../context/UserContext";
 import "./style.css";
+import { Link } from "react-router-dom";
 const $ = window.$;
 
 class Nav extends React.Component {
@@ -37,6 +38,7 @@ class Nav extends React.Component {
                                 <nav className="navbar navbar-expand-lg navbar-light">
                                     <a className="navbar-brand" id="loginLink" href="#" onClick={this.handleLoginShow}>Login</a>
                                     <a className="navbar-brand" id="signUpLink" href="#" onClick={this.handleSignUpShow}>Sign Up</a>
+                                    <Link to="/VitruvianWoman" className={window.location.pathname === "/VitruvianWoman" ? "nav-link active" : "nav-link"}>Vitruvian Woman</Link>
                                 </nav>
                                 <Login />
                                 <SignUp />
