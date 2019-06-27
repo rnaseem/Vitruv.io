@@ -22,11 +22,10 @@ const bodySeed = [
           name: 'Burning eyes',
           _id: 2,
           diagnosis: "conjunctivitus, foreign object"
-        },
+        }
       ]
     }
-  }
-];
+  }];
 
 db.Body
   .remove({})
@@ -41,15 +40,4 @@ db.Body
     process.exit(1);
   });
 
-// db.Diagnosis
-//   .remove({})
-//   .then(() => db.Diagnosis.collection.insertMany(diagnosisSeed))
-//   .then(data => {
-//     console.log(data.result.n + " diagnosis inserted!");
-//     process.exit(0);
-//   })
-//   .catch(err => {
-//     console.error(err);
-//     process.exit(1);
-//   });
 
