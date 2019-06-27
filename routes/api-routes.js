@@ -4,16 +4,16 @@ const db = require("../models");
 
 
 module.exports = function (app) {
-		app.post("/api/signup", function (req, res) {
-			db.User.create(req.body).then(function (result) {
-				res.json({ message: "Virtuv.io account created" });
-			}).catch(function (err) {
-				res.status(500).json({ error: err.message });
-			});
+	app.post("/api/signup", function (req, res) {
+		db.User.create(req.body).then(function (result) {
+			res.json({ message: "Virtuv.io account created" });
+		}).catch(function (err) {
+			res.status(500).json({ error: err.message });
 		});
+	});
 
-	app.get("/api/users", function (req,res) {
-		db.User.find({}).then(function(users){
+	app.get("/api/users", function (req, res) {
+		db.User.find({}).then(function (users) {
 			res.json(users);
 		});
 	});
@@ -50,4 +50,44 @@ module.exports = function (app) {
 			message: "public"
 		});
 	});
+
+	app.get("/api/body", function (req, res) {
+		db.Body.find({})
+			.then(function (data) {
+				res.json(data);
+			}).catch(err => {
+				res.json(err.message)
+			})
+	});
+
+
+	app.get("/api/body/:id", function (req, res) {
+		let id = req.params.id
+		db.Body.find({ _id: id })
+			.populate('Symptoms')
+			.then(function (data) {
+				res.json(data);
+			}).catch(err => {
+				res.json(err.message)
+			})
+	});
+
+
+	app.get("/api/symptoms", function (req, res) {
+		db.Symptoms.find({})
+			// .populate('Diagnosis')
+			.then(function (data) {
+				res.json(data)
+			});
+	});
+
+	// app.get("/api/diagnosis", function (req, res) {
+	// 	db.Diagnosis.find({})
+	// 		.then(function (data) {
+	// 			res.json(data);
+	// 		})
+	// 		.catch(function (err) {
+	// 			res.json(err);
+	// 		});
+	// });
 };
