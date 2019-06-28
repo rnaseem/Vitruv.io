@@ -7,6 +7,7 @@ import UserContext from "./context/UserContext";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Nav from "./components/Nav";
+import PatientForm from "./components/PatientForm";
 import VitruvianWoman from "./components/VitruvianWoman"
 
 class App extends Component {
@@ -26,8 +27,8 @@ class App extends Component {
       <Router>
         <UserContext.Provider value={{ setUser, user }}>
           <Nav />
-          {console.log(user)}
           <Switch>
+          <Route exact path='/form' component={PatientForm} />
             <Route exact path="/" component={VitruviAnimation} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />

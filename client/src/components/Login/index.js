@@ -1,11 +1,13 @@
 import React from "react";
 import UserContext from "../../context/UserContext";
 import Auth from "../utils/Auth";
-import { withRouter } from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import axios from "axios";
-import "./style.css";
+import Button from "react-bootstrap/Button";
+
 // import UserContext from "./context/UserContext";
 import UserPage from "../UserPage";
+import "./style.css";
 const $ = window.$;
 
 
@@ -57,9 +59,9 @@ class Login extends React.Component {
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h5 className="modal-title"><strong>Login</strong></h5>
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <Button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
-                                </button>
+                                </Button>
                             </div>
                             <div className="modal-body">
                                 <form id="loginForm" onSubmit={this.handleSubmit}>
@@ -90,11 +92,11 @@ class Login extends React.Component {
                                             onChange={this.handleChange}
                                         />
                                     </div>
-                                    <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Login</button>
+                                    <Button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Login</Button>
                                 </form>
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn-secondary" data-dismiss="modal">Close</button>
+                                <Button type="button" className="btn btn-secondary" data-dismiss="modal">Close</Button>
                             </div>
                         </div>
                     </div>
@@ -105,4 +107,3 @@ class Login extends React.Component {
 }
 
 export default withRouter(Login);
-
