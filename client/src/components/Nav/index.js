@@ -41,9 +41,9 @@ class NavBar extends React.Component {
                         )
                         :
                         (
-                            <nav className="navbar navbar-expand-lg navbar-light">
+                            <Nav className="navbar navbar-expand-lg navbar-light">
                                 <h6>Welcome, {context.user.email}</h6>
-                            </nav>
+                            </Nav>
                         )
                 }}
             </UserContext.Consumer>
