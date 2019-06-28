@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import "./style.css"
 // import UserContext from "./context/UserContext";
 
 
@@ -20,7 +21,7 @@ class SignUp extends React.Component {
         const { name, value } = e.target;
         this.setState({ [name]: value });
     }
-    
+
     handleSubmit(e) {
         e.preventDefault();
         const { password, passwordConfirm } = this.state;
@@ -38,17 +39,17 @@ class SignUp extends React.Component {
             let user = {
                 fullName: this.state.fullName,
                 email: this.state.email,
-                password:this.state.password
+                password: this.state.password
             }
             console.log(user)
             console.log(this.state);
-            
+
             axios.post("/api/signup", user)
-            .then(data => {
-                console.log(data);
-            }).catch(err=>{
-                console.log("Error", err.message)
-            })
+                .then(data => {
+                    console.log(data);
+                }).catch(err => {
+                    console.log("Error", err.message)
+                })
 
         }
     }
@@ -65,7 +66,7 @@ class SignUp extends React.Component {
                                 </button>
                             </div>
                             <div className="modal-body">
-                                <form id="signUpForm" onSubmit={e=>{this.handleSubmit(e)}}>
+                                <form id="signUpForm" onSubmit={e => { this.handleSubmit(e) }}>
                                     <div className="form-group">
                                         <label htmlFor="fullName">Full Name</label>
                                         <input

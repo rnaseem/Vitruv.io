@@ -19,13 +19,17 @@ connection.once("open", function () {
 })
 
 if (process.env.NODE_ENV === "production") {
-  app.get('*', function (req, res) {
-    res.json(path.join(__dirname + "./client/build/index.html"));
-  })
+  app.use(express.static(path.join(__dirname, "./client/build")));
 }
 
 // Define API routes here
 require("./routes/api-routes")(app);
+
+if (process.env.NODE_ENV === "production") {
+  app.get('*', function (req, res) {
+    res.json(path.join(__dirname, "./client/build/index.html"));
+  })
+}
 
 // Send every other request to the React app
 // Define any API routes before this runs
