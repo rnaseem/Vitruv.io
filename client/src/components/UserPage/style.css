@@ -1,10 +1,17 @@
 #userContainer {
     background-color: #ffffff;
-    border-radius: 5%;
+    border-radius: 2%;
     margin: 5rem;
     padding: 2rem;
+    /* width: 100rem; */
 }
 nav {
     /* background-color: #ffffff; */
     width: 100%;
+}
+.user-btn {
+    color: #131212;
+    background-color: #ffffff;
+    border-color: #666666;
+    border-radius: 0%;
 }

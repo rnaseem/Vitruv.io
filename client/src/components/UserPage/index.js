@@ -1,5 +1,9 @@
 import React from "react";
 import "./style.css";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 class UserPage extends React.Component {
 
@@ -12,24 +16,24 @@ class UserPage extends React.Component {
    
     render() {
         return (
-            <div className="container" id="userContainer">
-                <div className="row">
+            <Container className="container" id="userContainer">
+                <Row className="row">
                     <h1>User Page</h1>
-                </div>
-                <div className="form-group">
+                </Row>
+                <Form className="form-group">
                     <label for="exampleFormControlTextarea1">Personal Notes</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-                <div>
-                    <button>Save Note</button>
-                </div>
+                    <br/>
+                    <Button type="submit" className="user-btn" id="submitNote">Save Note</Button>
+                </Form>
+                <br/>
                 <div>
                     <div id="savedNotes"></div>
                 </div>
                 <div>
-                <button>send to form component</button>
+                <Button className="user-btn" >send to form component</Button>
                 </div>
-            </div>
+            </Container>
         )
     }
 }
