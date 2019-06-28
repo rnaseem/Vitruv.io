@@ -28,7 +28,7 @@ class App extends Component {
           <Nav />
           {console.log(user)}
           <Switch>
-            <Route path="/" component={VitruviAnimation} />
+            <Route exact path="/" component={VitruviAnimation} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
             <Route exact path="/VitruvianWoman" component={VitruvianWoman} />

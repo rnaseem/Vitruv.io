@@ -6,6 +6,7 @@ import axios from "axios";
 import "./style.css";
 // import UserContext from "./context/UserContext";
 import UserPage from "../UserPage";
+const $ = window.$;
 
 
 class Login extends React.Component {
@@ -35,16 +36,17 @@ class Login extends React.Component {
                 }
                 console.log(user)
                 this.context.setUser(res);
-                // this.props.history.push("/");
+                this.props.history.push("/");
                 axios.post("/api/authenticate", user)
                     .then(data => {
                         console.log(data)
-
                     }).catch(err => {
                         console.log("Err", err.message)
                     })
             });
         }
+        $("#loginModal").removeClass('fade').modal('hide')
+
     }
 
     render() {

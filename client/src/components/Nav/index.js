@@ -24,8 +24,9 @@ class Nav extends React.Component {
         $("#loginModal").modal("show");
     }
     handleLoginClose() {
-        $("#loginModal").modal("hide");
-    }
+        $("#mimodal").removeClass('fade').modal('hide')
+        console.log("fired")
+        }
 
 
     render() {
@@ -38,7 +39,8 @@ class Nav extends React.Component {
                                 <nav className="navbar navbar-expand-lg navbar-light">
                                     <a className="navbar-brand" id="loginLink" href="#" onClick={this.handleLoginShow}>Login</a>
                                     <a className="navbar-brand" id="signUpLink" href="#" onClick={this.handleSignUpShow}>Sign Up</a>
-                                    <Link to="/VitruvianWoman" className={window.location.pathname === "/VitruvianWoman" ? "nav-link active" : "nav-link"}>Vitruvian Woman</Link>
+                                    <Link to="/VitruvianWoman" className={window.location.pathname === "/VitruvianWoman" ? "nav-link active" : "nav-link"}> Woman</Link>
+                                    <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}> Man</Link>
                                 </nav>
                                 <Login />
                                 <SignUp />
@@ -46,9 +48,17 @@ class Nav extends React.Component {
                         )
                         :
                         (
+                            <>
                             <nav className="navbar navbar-expand-lg navbar-light">
-                                <h2>Welcome, {context.user.email}</h2>
+                                <h2 style={{fontSize : 23}}>Welcome, {context.user.email}</h2>
+                                <a className="navbar-brand" id="loginLink" href="/user" onClick={this.handleLoginShow}>Your Page</a>
+                                <a className="navbar-brand" id="loginLink" href="/logout" onClick={this.handleLoginShow}>Logout</a>  
+                                <Link to="/VitruvianWoman" className={window.location.pathname === "/VitruvianWoman" ? "nav-link active" : "nav-link"}> Woman</Link>
+                                    <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}> Man</Link>
+                              
                             </nav>
+                            
+                            </>
                         )
                 }}
             </UserContext.Consumer>
