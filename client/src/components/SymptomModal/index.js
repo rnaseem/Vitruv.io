@@ -16,7 +16,8 @@ class Symptom extends React.Component {
         checkboxes: {},
         bodyData: {},
         regionSymptoms: [],
-        diagnosis: []
+        diagnosis: [],
+        names: []
     };
 
 
@@ -44,30 +45,30 @@ class Symptom extends React.Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
+        let checkboxSymptomChoices = [];
 
         Object.keys(this.state.checkboxes)
             .filter(checkbox => this.state.checkboxes[checkbox])
             .forEach(checkbox => {
-                // this is where the ids can be seen in the console.
-                console.log(checkbox, "is selected.");
+                checkboxSymptomChoices.push(checkbox);
             });
-            const getNestedObject = (nestedObj, pathArr) => {
-                return pathArr.reduce((obj, key) =>
-                (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj);
-                }
-                                
-                const diagnosis = getNestedObject(this.state.regionSymptoms[0],['diagnosis']);
-                                
-                this.setState({
-                    diagnosis: diagnosis
-                });
-                    
+        
+        const diagnosis = this.state.regionSymptoms
+            .filter(symptom => {
+              return checkboxSymptomChoices.includes(symptom.nameWithDiagnosis[0])
+            })
+            .map(symptom => symptom.nameWithDiagnosis[1] )
+            .join(", ");
+
+            this.setState({
+                diagnosis: diagnosis
+            });
     };
 
     makeCheckbox = symptomOption => (
         <Checkbox
-            label={symptomOption.name}
-            isSelected={this.state.checkboxes[symptomOption.name]}
+            label={symptomOption.nameWithDiagnosis[0]}
+            isSelected={this.state.checkboxes[symptomOption.nameWithDiagnosis[0]]}
             onCheckboxChange={this.handleCheckboxChange}
             key={symptomOption.name}
         />
@@ -77,18 +78,18 @@ class Symptom extends React.Component {
 
 
 
-                
+
     getSymptomsForRegion = () => {
         let regionSymptoms = [];
         axios.get("/api/body").then((res) => {
-    
+
             const bodyData = res
-    
+
             for (let i = 0; i < bodyData.data[0].head.symptoms.length; i++) {
                 regionSymptoms.push(bodyData.data[0].head.symptoms[i])
             }
-            
-    
+
+
             const symptomOptions = regionSymptoms.reduce(
                 (regionSymptoms, symptom) => ({
                     ...regionSymptoms,
@@ -96,7 +97,6 @@ class Symptom extends React.Component {
                 }),
                 {}
             );
-
             this.setState({
                 regionSymptoms: regionSymptoms,
                 checkboxes: symptomOptions
@@ -104,11 +104,13 @@ class Symptom extends React.Component {
         });
     }
 
-    componentDidUpdate (prevProps) {
+    componentDidUpdate(prevProps) {
         if (prevProps.selectedRegion !== this.props.selectedRegion) {
             this.getSymptomsForRegion();
         }
+        console.log(this.state.diagnosis)
     }
+
 
     render() {
         return (
@@ -130,7 +132,6 @@ class Symptom extends React.Component {
                                 </form>
                                 <div id="results">
                                     {this.state.diagnosis}
-                                    
                                 </div>
                             </div>
                         </div>
