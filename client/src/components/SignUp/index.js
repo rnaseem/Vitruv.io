@@ -61,7 +61,7 @@ class SignUp extends React.Component {
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title">Creat an Account</h5>
+                                <h5 className="modal-title"><strong>Creat an Account</strong></h5>
                                 <Button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </Button>
@@ -69,7 +69,7 @@ class SignUp extends React.Component {
                             <div className="modal-body">
                                 <form id="signUpForm" onSubmit={e => { this.handleSubmit(e) }}>
                                     <div className="form-group">
-                                        <label htmlFor="fullName">Full Name</label>
+                                        <label htmlFor="fullName"><strong>Full Name</strong></label>
                                         <input
                                             name="fullName"
                                             type="input"
@@ -81,7 +81,7 @@ class SignUp extends React.Component {
                                         />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="signUpEmail">Email address</label>
+                                        <label htmlFor="signUpEmail"><strong>Email address</strong></label>
                                         <input
                                             name="email"
                                             type="email"
@@ -94,7 +94,7 @@ class SignUp extends React.Component {
                                         />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="signUpPassword">Password</label>
+                                        <label htmlFor="signUpPassword"><strong>Password</strong></label>
                                         <input
                                             name="password"
                                             type="password"
@@ -106,7 +106,7 @@ class SignUp extends React.Component {
                                         />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="passwordConfirm">Retype Password</label>
+                                        <label htmlFor="passwordConfirm"><strong>Retype Password</strong></label>
                                         <input
                                             name="passwordConfirm"
                                             type="password"
@@ -116,7 +116,7 @@ class SignUp extends React.Component {
                                             value={this.state.passwordConfirm}
                                             onChange={this.handleChange} />
                                     </div>
-                                    <button type="submit" className="btn btn-primary">Submit</button>
+                                    <button type="submit" data-dismiss="modal" className="btn btn-primary">Submit</button>
                                 </form>
                             </div>
                             <div className="modal-footer">

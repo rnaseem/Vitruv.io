@@ -8,6 +8,7 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Nav from "./components/Nav";
 import PatientForm from "./components/PatientForm";
+import VitruvianWoman from "./components/VitruvianWoman"
 
 class App extends Component {
   static contextType = UserContext;
@@ -27,12 +28,12 @@ class App extends Component {
         <UserContext.Provider value={{ setUser, user }}>
           <Nav />
           <Switch>
-            <Route exact path='/form' component={PatientForm} />
-            <Route exact path='/user' component={UserPage} />
-            <Route path="/" component={VitruviAnimation} />
+          <Route exact path='/form' component={PatientForm} />
+            <Route exact path="/" component={VitruviAnimation} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
-              {/* <ProtectedRoute exact path="/user" component={UserPage} /> */}
+            <Route exact path="/VitruvianWoman" component={VitruvianWoman} />
+              <ProtectedRoute exact path="/user" component={UserPage} />
           </Switch>
         </UserContext.Provider>
       </Router>

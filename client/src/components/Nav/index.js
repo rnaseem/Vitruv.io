@@ -4,6 +4,7 @@ import SignUp from "../SignUp";
 import UserContext from "../../context/UserContext";
 import Nav from "react-bootstrap/Nav";
 import "./style.css";
+import { Link } from "react-router-dom";
 const $ = window.$;
 // import Modal from "react-bootstrap/Modal";
 
@@ -22,9 +23,12 @@ class NavBar extends React.Component {
         $("#loginModal").modal("show");
     }
     handleLoginClose() {
-        $("#loginModal").modal("hide");
-    }
-    render(props) {
+        $("#mimodal").removeClass('fade').modal('hide')
+        console.log("fired")
+        }
+
+
+    render() {
         return (
             <UserContext.Consumer>
                 {context => {
@@ -34,6 +38,8 @@ class NavBar extends React.Component {
                                 <Nav className="navbar navbar-expand-lg navbar-light">
                                     <a className="navbar-brand" id="loginLink" href="#" onClick={this.handleLoginShow}>Login</a>
                                     <a className="navbar-brand" id="signUpLink" href="#" onClick={this.handleSignUpShow}>Sign Up</a>
+                                    <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}> Man</Link>
+                                    <Link to="/VitruvianWoman" className={window.location.pathname === "/VitruvianWoman" ? "nav-link active" : "nav-link"}> Woman</Link>
                                 </Nav>
                                 <Login />
                                 <SignUp />
@@ -41,9 +47,17 @@ class NavBar extends React.Component {
                         )
                         :
                         (
-                            <Nav className="navbar navbar-expand-lg navbar-light">
-                                <h6>Welcome, {context.user.email}</h6>
-                            </Nav>
+                            <>
+                            <nav className="navbar navbar-expand-lg navbar-light">
+                                <h2 style={{fontSize : 20}}>Welcome, {context.user.email}</h2>
+                                <a className="navbar-brand" id="loginLink" href="/user" onClick={this.handleLoginShow}>Your Page</a>
+                                <a className="navbar-brand" id="loginLink" href="/logout" onClick={this.handleLoginShow}>Logout</a>  
+                                <Link to="/VitruvianWoman" className={window.location.pathname === "/VitruvianWoman" ? "nav-link active" : "nav-link"}> Woman</Link>
+                                    <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}> Man</Link>
+                              
+                            </nav>
+                            
+                            </>
                         )
                 }}
             </UserContext.Consumer>

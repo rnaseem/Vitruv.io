@@ -118,20 +118,22 @@ class Symptom extends React.Component {
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title">Symptoms for {this.props.selectedRegion}</h5>
+                            <h5 className="modal-title"><strong>Symptoms for {this.props.selectedRegion}</strong></h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div className="modal-body">
-                            <p>Check all symptoms that apply</p>
+                            <p><strong>Check all symptoms that apply</strong></p>
                             <div className="headAndFace-list">
                                 <form className="" id="symptomForm" onSubmit={this.handleFormSubmit}>
                                     {this.makeCheckboxes()}
                                     <button type="submit" className="btn btn-primary">Diagnose</button>
                                 </form>
                                 <div id="results">
+                                    <strong>
                                     {this.state.diagnosis}
+                                    </strong>
                                 </div>
                             </div>
                         </div>
