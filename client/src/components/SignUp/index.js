@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
-import "./style.css"
+import "./style.css";
+import Button from "react-bootstrap/Button";
 // import UserContext from "./context/UserContext";
 
 
@@ -61,9 +62,9 @@ class SignUp extends React.Component {
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h5 className="modal-title">Creat an Account</h5>
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <Button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
-                                </button>
+                                </Button>
                             </div>
                             <div className="modal-body">
                                 <form id="signUpForm" onSubmit={e => { this.handleSubmit(e) }}>

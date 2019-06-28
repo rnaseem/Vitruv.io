@@ -6,15 +6,13 @@ import UserPage from "./components/UserPage";
 import UserContext from "./context/UserContext";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
-import NavBar from "./components/Nav";
+import Nav from "./components/Nav";
 
 class App extends Component {
   static contextType = UserContext;
   state = {
-    user: null,
-    show: false
+    user: null
   }
-
 
   setUser = (user) => {
     this.setState({ user: user });
@@ -26,14 +24,14 @@ class App extends Component {
     return (
       <Router>
         <UserContext.Provider value={{ setUser, user }}>
-          <NavBar />
+          <Nav />
           {console.log(user)}
           <Switch>
             <Route exact path='/user' component={UserPage} />
             <Route path="/" component={VitruviAnimation} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
-            {/* <ProtectedRoute exact path="/user" component={UserPage} /> */}
+              {/* <ProtectedRoute exact path="/user" component={UserPage} /> */}
           </Switch>
         </UserContext.Provider>
       </Router>
