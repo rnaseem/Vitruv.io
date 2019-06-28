@@ -5,9 +5,12 @@ import FilledForm from '../FilledForm';
 const pdf = {
     regularForm: function (user) {
         return (
+
             <FilledForm {...user} />
         )
     }
 }
 
 export default pdf;
+
+ 
