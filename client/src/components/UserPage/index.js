@@ -20,16 +20,6 @@ class UserPage extends React.Component {
                 <Row className="row">
                     <h1>User Page</h1>
                 </Row>
-                <Form className="form-group">
-                    <label for="exampleFormControlTextarea1">Personal Notes</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    <br/>
-                    <Button type="submit" className="user-btn" id="submitNote">Save Note</Button>
-                </Form>
-                <br/>
-                <div>
-                    <div id="savedNotes"></div>
-                </div>
                 <div>
                 <Button className="user-btn" >send to form component</Button>
                 </div>
