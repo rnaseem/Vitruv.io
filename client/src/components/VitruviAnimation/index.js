@@ -81,7 +81,7 @@ class VitruviAnimation extends React.Component {
                     <source src={vitruvianMan}
                         type="video/mp4"></source>
                 </video>
-                <div className="content">
+                <div className="content1">
                     <svg
                         version="1.1"
                         id="svg5286"
