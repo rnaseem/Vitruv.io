@@ -50,7 +50,7 @@ class Nav extends React.Component {
                         (
                             <>
                             <nav className="navbar navbar-expand-lg navbar-light">
-                                <h2 style={{fontSize : 23}}>Welcome, {context.user.email}</h2>
+                                <h2 style={{fontSize : 20}}>Welcome, {context.user.email}</h2>
                                 <a className="navbar-brand" id="loginLink" href="/user" onClick={this.handleLoginShow}>Your Page</a>
                                 <a className="navbar-brand" id="loginLink" href="/logout" onClick={this.handleLoginShow}>Logout</a>  
                                 <Link to="/VitruvianWoman" className={window.location.pathname === "/VitruvianWoman" ? "nav-link active" : "nav-link"}> Woman</Link>
