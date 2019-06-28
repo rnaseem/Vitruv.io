@@ -7,6 +7,7 @@ import UserContext from "./context/UserContext";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Nav from "./components/Nav";
+import PatientForm from "./components/PatientForm";
 
 class App extends Component {
   static contextType = UserContext;
@@ -27,6 +28,7 @@ class App extends Component {
           <Nav />
           {console.log(user)}
           <Switch>
+            <Route exact path='/form' component={PatientForm} />
             <Route exact path='/user' component={UserPage} />
             <Route path="/" component={VitruviAnimation} />
             <Route path="/login" component={Login} />
