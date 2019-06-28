@@ -54,7 +54,7 @@ class Login extends React.Component {
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title">Login</h5>
+                                <h5 className="modal-title"><strong>Login</strong></h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -63,7 +63,7 @@ class Login extends React.Component {
                                 <form id="loginForm" onSubmit={this.handleSubmit}>
                                     <div className="form-group">
                                         <label htmlFor="loginEmail"
-                                        >Email address</label>
+                                        ><strong>Email address</strong></label>
                                         <input
                                             name="email"
                                             type="email"
@@ -77,7 +77,7 @@ class Login extends React.Component {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="loginPassword"
-                                        >Password</label>
+                                        ><strong>Password</strong></label>
                                         <input
                                             type="password"
                                             name="password"
