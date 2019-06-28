@@ -26,7 +26,6 @@ class App extends Component {
       <Router>
         <UserContext.Provider value={{ setUser, user }}>
           <Nav />
-          {console.log(user)}
           <Switch>
             <Route exact path='/form' component={PatientForm} />
             <Route exact path='/user' component={UserPage} />

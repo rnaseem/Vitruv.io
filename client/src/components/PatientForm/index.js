@@ -1,26 +1,26 @@
 import React from "react";
+import pdf from '../utils/pdf';
+import FilledForm from "../FilledForm";
+let completeForm;
 
 class PatientForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             currentPage: 1,
-            //info
             name: '',
             dob: '',
             age: '',
-            //why here
             problems: [],
             otherProblems: '',
-            //psychiatric info
             lastPsyProvider: '',
             lastPsyVisit: '',
             psyMeds: '',
             psySuicide: '',
-            //psychiatric info continued
             erCount: '',
             erLastTime: '',
-            psySymptoms: []
+            psySymptoms: [],
+            formProps: null
 
         }
     }
@@ -36,7 +36,6 @@ class PatientForm extends React.Component {
         const {
             name,
             dob,
-            // problems,
             otherProblems,
             lastPsyProvider,
             lastPsyVisit,
@@ -44,18 +43,28 @@ class PatientForm extends React.Component {
             psySuicide,
             erCount,
             erLastTime,
-            // psySymptoms
         } = this.state
-        console.log(`name: ${name},
-        dob: ${dob},
-        otherProblems: ${otherProblems}
-        lastPsyProvider: ${lastPsyProvider},
-            lastPsyVisit: ${lastPsyVisit},
-            psyMeds: ${psyMeds},
-            psySuicide: ${psySuicide},
-            erCount: ${erCount},
-            erLastTime: ${erLastTime}`)
+
+        let user = {
+            name: this.state.name,
+            dob: this.state.dob,
+            otherProblems: this.state.otherProblems,
+            lastPsyProvider: this.state.lastPsyProvider,
+            lastPsyVisit: this.state.lastPsyVisit,
+            psyMeds: this.state.psyMeds,
+            psySuicide: this.state.psySuicide,
+            erCount: this.state.erCount,
+            erLastTime: this.state.erLastTime
+        }
+
+        this.setState(
+            this.state.formProps = user
+        )
+
+
         //pdf thing here
+        completeForm = pdf.regularForm(user)
+        console.log("Complete Form: ", completeForm);
     }
 
     _next = () => {
@@ -74,9 +83,7 @@ class PatientForm extends React.Component {
         })
     }
 
-    /*
-    * the functions for our button
-    */
+    // the functions for our button
     previousButton() {
         let currentPage = this.state.currentPage;
         if (currentPage !== 1) {
@@ -106,48 +113,55 @@ class PatientForm extends React.Component {
     }
 
     render() {
+        let formProps = this.state.formProps
         return (
-            <React.Fragment>
-                <h1><strong>Virtruvio Mock Patient Form</strong></h1>
-                <p>Page {this.state.currentPage} </p>
+            <>
+                <React.Fragment>
+                    <h1><strong>Virtruvio Mock Patient Form</strong></h1>
+                    <p>Page {this.state.currentPage} </p>
 
-                <form onSubmit={this.handleSubmit}>
-                    {/* 
-            render the form steps and pass required props in
-          */}
-                    <GeneralInfo
-                        currentPage={this.state.currentPage}
-                        handleChange={this.handleChange}
-                        patientName={this.state.name}
-                        dob={this.state.dob}
-                        age={this.state.age}
-                    />
-                    <ProblemsPage
-                        currentPage={this.state.currentPage}
-                        handleChange={this.handleChange}
-                        // problems={this.state.problems}
-                        otherProblems={this.state.otherProblems}
-                    />
-                    <PsyInfo
-                        currentPage={this.state.currentPage}
-                        handleChange={this.handleChange}
-                        lastPsyProvider={this.state.lastPsyProvider}
-                        lastPsyVisit={this.state.lastPsyVisit}
-                        psyMeds={this.state.psyMeds}
-                        psySuicide={this.state.psySuicide}
-                    />
-                    <PsyInfoContinued
-                        currentPage={this.state.currentPage}
-                        handleChange={this.handleChange}
-                        erCount={this.state.erCount}
-                        erLastTime={this.state.erLastTime}
-                    // psySymptoms={this.state.psySymptoms}
-                    />
-                    {this.previousButton()}
-                    {this.nextButton()}
+                    <form onSubmit={this.handleSubmit}>
+                        {/* render the form steps and pass required props in */}
 
-                </form>
-            </React.Fragment>
+                        <GeneralInfo
+                            currentPage={this.state.currentPage}
+                            handleChange={this.handleChange}
+                            name={this.state.name}
+                            dob={this.state.dob}
+                            age={this.state.age}
+                        />
+
+                        <ProblemsPage
+                            currentPage={this.state.currentPage}
+                            handleChange={this.handleChange}
+                            otherProblems={this.state.otherProblems}
+                        />
+
+                        <PsyInfo
+                            currentPage={this.state.currentPage}
+                            handleChange={this.handleChange}
+                            lastPsyProvider={this.state.lastPsyProvider}
+                            lastPsyVisit={this.state.lastPsyVisit}
+                            psyMeds={this.state.psyMeds}
+                            psySuicide={this.state.psySuicide}
+                        />
+
+                        <PsyInfoContinued
+                            currentPage={this.state.currentPage}
+                            handleChange={this.handleChange}
+                            erCount={this.state.erCount}
+                            erLastTime={this.state.erLastTime}
+                        />
+
+                        {this.previousButton()}
+                        {this.nextButton()}
+
+                    </form>
+
+                </React.Fragment>
+
+                {formProps && completeForm}
+            </>
         );
     }
 }
@@ -163,7 +177,7 @@ function GeneralInfo(props) {
             <input
                 className="form-control"
                 id="name"
-                name="patientName"
+                name="name"
                 type="text"
                 placeholder="Enter your full name"
                 value={props.name}
@@ -218,52 +232,53 @@ function PsyInfo(props) {
         return null
     }
     return (
-            <div className="form-group">
-                {/* checkbox, if yes, answer question */}
-                <label htmlFor="lastPsyProvider">lastPsyProvider</label>
-                <input
-                    className="form-control"
-                    id="lastPsyProvider"
-                    name="lastPsyProvider"
-                    type="text"
-                    placeholder="Enter psyProvider"
-                    value={props.lastPsyProvider}
-                    onChange={props.handleChange}
-                />
-                {/* checkbox, if yes, answer question */}
-                <label htmlFor="lastPsyVisit">lastPsyVisit</label>
-                <input
-                    className="form-control"
-                    id="lastPsyVisit"
-                    name="lastPsyVisit"
-                    type="text"
-                    placeholder="Enter lastPsyVisit"
-                    value={props.lastPsyVisit}
-                    onChange={props.handleChange}
-                />
-                <label htmlFor="psyMeds">psyMeds</label>
-                <input
-                    className="form-control"
-                    id="psyMeds"
-                    name="psyMeds"
-                    type="psyMeds"
-                    placeholder="Enter psyMeds"
-                    value={props.psyMeds}
-                    onChange={props.handleChange}
-                />
-                <label htmlFor="psySuicide">psySuicide</label>
-                <input
-                    className="form-control"
-                    id="psySuicide"
-                    name="psySuicide"
-                    type="psySuicide"
-                    placeholder="Enter psySuicide"
-                    value={props.psySuicide}
-                    onChange={props.handleChange}
-                />
-            </div>
+        <div className="form-group">
+            {/* checkbox, if yes, answer question */}
+            <label htmlFor="lastPsyProvider">lastPsyProvider</label>
+            <input
+                className="form-control"
+                id="lastPsyProvider"
+                name="lastPsyProvider"
+                type="text"
+                placeholder="Enter psyProvider"
+                value={props.lastPsyProvider}
+                onChange={props.handleChange}
+            />
+            {/* checkbox, if yes, answer question */}
+            <label htmlFor="lastPsyVisit">lastPsyVisit</label>
+            <input
+                className="form-control"
+                id="lastPsyVisit"
+                name="lastPsyVisit"
+                type="text"
+                placeholder="Enter lastPsyVisit"
+                value={props.lastPsyVisit}
+                onChange={props.handleChange}
+            />
+            <label htmlFor="psyMeds">psyMeds</label>
+            <input
+                className="form-control"
+                id="psyMeds"
+                name="psyMeds"
+                type="psyMeds"
+                placeholder="Enter psyMeds"
+                value={props.psyMeds}
+                onChange={props.handleChange}
+            />
+            <label htmlFor="psySuicide">psySuicide</label>
+            <input
+                className="form-control"
+                id="psySuicide"
+                name="psySuicide"
+                type="psySuicide"
+                placeholder="Enter psySuicide"
+                value={props.psySuicide}
+                onChange={props.handleChange}
+            />
+        </div>
     );
 }
+
 function PsyInfoContinued(props) {
     if (props.currentPage !== 4) {
         return null
@@ -293,12 +308,10 @@ function PsyInfoContinued(props) {
                 />
             </div>
             <button className="btn btn-success btn-block">Submit</button>
-            </React.Fragment>
+        </React.Fragment>
 
     );
 }
-
-
 
 export default PatientForm;
 
