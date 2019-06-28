@@ -46,40 +46,23 @@ class Symptom extends React.Component {
     handleFormSubmit = event => {
         event.preventDefault();
         let checkboxSymptomChoices = [];
-        let namesHold = [];
-        let diagnosis = [];
 
         Object.keys(this.state.checkboxes)
             .filter(checkbox => this.state.checkboxes[checkbox])
             .forEach(checkbox => {
                 checkboxSymptomChoices.push(checkbox);
             });
-
-        for (let i = 0; i < this.state.regionSymptoms.length; i++) {
-
-            namesHold.push((this.state.regionSymptoms[i].nameWithDiagnosis[0]));
-
-        }
-
-            const symptomMatches = checkboxSymptomChoices.filter(element => namesHold.includes(element));
-            console.log(symptomMatches);
-
-            for (let i = 0; i < this.state.regionSymptoms.length; i++) {
-
-
-            if (this.state.regionSymptoms[i].nameWithDiagnosis[0] == symptomMatches[i]) {
-
-                //  diagnosis.push(this.state.regionSymptoms[i].nameWithDiagnosis[1])
-
-            }
-
-            }
-            this.setState({
-                diagnosis: diagnosis,
-                names: namesHold
-            });
-
         
+        const diagnosis = this.state.regionSymptoms
+            .filter(symptom => {
+              return checkboxSymptomChoices.includes(symptom.nameWithDiagnosis[0])
+            })
+            .map(symptom => symptom.nameWithDiagnosis[1] )
+            .join(", ");
+
+            this.setState({
+                diagnosis: diagnosis
+            });
     };
 
     makeCheckbox = symptomOption => (
