@@ -11,7 +11,7 @@ mongoose.connect(
 const bodySeed = [
   {
     head: {
-      location: 'Head',
+      location: 'head',
       symptoms: [
         {
           nameWithDiagnosis: ['Eye pain',
@@ -117,7 +117,29 @@ const bodySeed = [
         nameWithDiagnosis: ['Weight gain',
         
          "Eating disorder, Sleeping disorder, Depression, Constipation"]
-      }
+      },
+    ]
+  }
+},
+{
+  breasts: {
+    location: 'breasts',
+    symptoms: [
+      {
+        nameWithDiagnosis: ['Lump in breast',
+        
+         "Breast cancer"]
+      },
+      {
+        nameWithDiagnosis: ['Tightness in chest',
+        
+         "Bronchitis, Pneumothorax, Cardiac failure"]
+      },
+      {
+        nameWithDiagnosis: ['Pain or burning while breastfeeding',
+        
+         "Mastitis"]
+      },
     ]
   }
 }
