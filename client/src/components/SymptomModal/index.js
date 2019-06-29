@@ -2,14 +2,6 @@ import React from "react";
 import Checkbox from "../Checkbox";
 import axios from "axios";
 
-
-/* grab bodyData, push the symptoms.name to your checkbox, 
-grab that as a value to access, and if clicked, find name === what you clicked,
-display that diagnosis. 
-Hardest part is how do I drill into the nested object and grab it. 
-(Object.entries)
-*/
-
 class Symptom extends React.Component {
 
     state = {
@@ -85,9 +77,29 @@ class Symptom extends React.Component {
 
             const bodyData = res
 
-            for (let i = 0; i < bodyData.data[0].head.symptoms.length; i++) {
-                regionSymptoms.push(bodyData.data[0].head.symptoms[i])
-            }
+            switch(this.props.selectedRegion) {
+                case 'head':
+                        for (let i = 0; i < bodyData.data[0].head.symptoms.length; i++) {
+                            regionSymptoms.push(bodyData.data[0].head.symptoms[i])
+                        }            
+                  break;
+                case 'abdomen':
+                        for (let i = 0; i < bodyData.data[2].abdomen.symptoms.length; i++) {
+                            regionSymptoms.push(bodyData.data[2].abdomen.symptoms[i])
+                        }  
+                  break;
+                case 'arm':
+                        for (let i = 0; i < bodyData.data[1].arm.symptoms.length; i++) {
+                            regionSymptoms.push(bodyData.data[1].arm.symptoms[i])
+                        }  
+                  break;
+                  case 'breasts':
+                        for (let i = 0; i < bodyData.data[3].breasts.symptoms.length; i++) {
+                            regionSymptoms.push(bodyData.data[3].breasts.symptoms[i])
+                        }  
+                  break;
+                default: console.log("your switch case is dumb bro")  
+              }
 
 
             const symptomOptions = regionSymptoms.reduce(
@@ -108,7 +120,7 @@ class Symptom extends React.Component {
         if (prevProps.selectedRegion !== this.props.selectedRegion) {
             this.getSymptomsForRegion();
         }
-        console.log(this.state.diagnosis)
+        console.log(this.state.selectedRegion)
     }
 
 

@@ -1,6 +1,8 @@
 import React from "react"
 import "./style.css";
 import vitruvianWoman from "./vitruvianWoman.jpg";
+import SymptomModal from "../SymptomModal"
+const $ = window.$;
 
 class VitruvianWoman extends React.Component {
 
@@ -24,6 +26,13 @@ class VitruvianWoman extends React.Component {
         this.setState({ fillOpacityGenitals: "0" })
     }
 
+    handleSymptomModal = (e) => {
+        e.preventDefault();
+        $("#symptomModal").modal("show");
+        this.setState({
+          selectedRegion: e.target.id  
+        })
+    }
 
     render = () => {
         return (
@@ -41,10 +50,11 @@ class VitruvianWoman extends React.Component {
                                 <feGaussianBlur stdDeviation="24.101076" id="feGaussianBlur2152" />
                             </filter>
                         </defs>
-                        <path style={{ fillOpacity: this.state.fillOpacityBreasts, fill: '#ca7e00', stroke: '#000000', strokeWidth: 1, strokeLinecap: 'butt', strokeLinejoin: 'miter', strokeOpacity: 1, fillOpacity: this.state.fillOpacityBreasts, filter: 'url(#filter2150)' }} onMouseOver={this.hoverBreasts} onMouseOut={this.unhoverBreasts} d="m 582.22453,158.57447 30.20185,63.75946 16.77881,46.98066 85.5719,1.67788 92.28343,-1.67788 21.81245,-48.65854 15.10092,-70.47098 -124.16316,1.67788 z" id="path2122" />
-                        <path style={{ fillOpacity: this.state.fillOpacityGenitals, fill: '#ca7e00', stroke: '#000000', strokeWidth: 1, strokeLinecap: 'butt', strokeLinejoin: 'miter', strokeOpacity: 1, fillOpacity: this.state.fillOpacityGenitals, filter: 'url(#filter2138)' }} onMouseOver={this.hoverGenitals} onMouseOut={this.unhoverGenitals} d="m 827.19509,422.00171 33.55761,92.28343 -102.35071,30.20185 -31.87973,3.35576 -46.98066,-3.35576 -43.62489,-6.71152 -40.26913,-15.10093 -26.84609,-20.13456 -11.74516,-15.10093 10.06728,-35.23549 18.45668,-25.16821 10.06729,-20.13456 68.7931,6.71152 55.37005,-6.71152 43.6249,3.35576 z" id="path2128" />
+                        <path id="breasts" style={{ fillOpacity: this.state.fillOpacityBreasts, fill: '#ca7e00', stroke: '#000000', strokeWidth: 1, strokeLinecap: 'butt', strokeLinejoin: 'miter', strokeOpacity: 1, fillOpacity: this.state.fillOpacityBreasts, filter: 'url(#filter2150)' }} onMouseOver={this.hoverBreasts} onMouseOut={this.unhoverBreasts} onClick={this.handleSymptomModal} d="m 582.22453,158.57447 30.20185,63.75946 16.77881,46.98066 85.5719,1.67788 92.28343,-1.67788 21.81245,-48.65854 15.10092,-70.47098 -124.16316,1.67788 z" />
+                        <path id="ladyGenitals" style={{ fillOpacity: this.state.fillOpacityGenitals, fill: '#ca7e00', stroke: '#000000', strokeWidth: 1, strokeLinecap: 'butt', strokeLinejoin: 'miter', strokeOpacity: 1, fillOpacity: this.state.fillOpacityGenitals, filter: 'url(#filter2138)' }} onMouseOver={this.hoverGenitals} onMouseOut={this.unhoverGenitals} d="m 827.19509,422.00171 33.55761,92.28343 -102.35071,30.20185 -31.87973,3.35576 -46.98066,-3.35576 -43.62489,-6.71152 -40.26913,-15.10093 -26.84609,-20.13456 -11.74516,-15.10093 10.06728,-35.23549 18.45668,-25.16821 10.06729,-20.13456 68.7931,6.71152 55.37005,-6.71152 43.6249,3.35576 z" />
                     </svg>
                 </div>
+                <SymptomModal selectedRegion={this.state.selectedRegion} />
             </>
         )
 

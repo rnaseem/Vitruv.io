@@ -214,7 +214,7 @@ class VitruviAnimation extends React.Component {
                             onMouseOut={this.unhoverGenits}
                         />
                         <path
-                            id="torso"
+                            id="abdomen"
                             style={{
                                 fill: "#c16912",
                                 stroke: "#000000",
@@ -228,9 +228,10 @@ class VitruviAnimation extends React.Component {
                             d="m 861.78218,250.29703 30.09901,91.88119 -11.08911,68.11881 -1.58416,17.42574 156.83168,-3.16831 -11.0891,-28.51486 7.9208,-20.59406 -9.505,-26.93069 26.9307,-82.37624 -1.5841,-17.42574 z"
                             onMouseOver={this.hoverTorso}
                             onMouseOut={this.unhoverTorso}
+                            onClick={this.handleSymptomModal}
                         />
                         <path
-                            id="rightArm"
+                            id="arm"
                             style={{
                                 fill: "#c16912",
                                 stroke: "#000000",
@@ -244,6 +245,7 @@ class VitruviAnimation extends React.Component {
                             d="M 1061.3861,183.76238 1120,198.0198 l 57.0297,1.58416 123.5644,-7.92079 85.5445,-15.84159 11.0891,44.35644 -88.7128,12.67327 h -53.8614 l -42.7723,11.08911 -41.1881,-9.50495 -104.5545,7.92079 z"
                             onMouseOver={this.hoverRightArm}
                             onMouseOut={this.unhoverRightArm}
+                            onClick={this.handleSymptomModal}
                         />
                         <path
                             id="head"
@@ -279,7 +281,7 @@ class VitruviAnimation extends React.Component {
                             onMouseOut={this.unhoverFeet}
                         />
                         <path
-                            id="leftArm"
+                            id="arm"
                             style={{
                                 fill: "#c16912",
                                 stroke: "#000000",
@@ -294,6 +296,7 @@ class VitruviAnimation extends React.Component {
                             d="m 841.18812,188.51485 4.75247,55.44555 -50.69307,-4.75248 -53.86138,-1.58416 -58.61386,3.16832 -68.11881,-12.67327 -93.46535,1.58416 -1.58416,-55.44554 55.44554,6.33663 36.43565,15.84158 28.51485,4.75248 41.18812,-6.33663 52.27723,4.75247 26.93069,3.16832 52.27723,-4.75248 z"
                             onMouseOver={this.hoverLeftArm}
                             onMouseOut={this.unhoverLeftArm}
+                            onClick={this.handleSymptomModal}
                         />
                     </svg>
                 </div>
