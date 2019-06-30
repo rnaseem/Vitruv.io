@@ -1,7 +1,13 @@
 import React from "react";
 import pdf from '../utils/pdf';
+import Pdf from "react-to-pdf";
+import axios from "axios";
 import FilledForm from "../FilledForm";
+const ref = React.createRef();
 let completeForm;
+
+
+
 
 class PatientForm extends React.Component {
     constructor(props) {
@@ -11,7 +17,6 @@ class PatientForm extends React.Component {
             name: '',
             dob: '',
             age: '',
-            problems: [],
             otherProblems: '',
             lastPsyProvider: '',
             lastPsyVisit: '',
@@ -19,7 +24,6 @@ class PatientForm extends React.Component {
             psySuicide: '',
             erCount: '',
             erLastTime: '',
-            psySymptoms: [],
             formProps: null
 
         }
@@ -33,17 +37,6 @@ class PatientForm extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault()
-        const {
-            name,
-            dob,
-            otherProblems,
-            lastPsyProvider,
-            lastPsyVisit,
-            psyMeds,
-            psySuicide,
-            erCount,
-            erLastTime,
-        } = this.state
 
         let user = {
             name: this.state.name,
@@ -61,10 +54,13 @@ class PatientForm extends React.Component {
             this.state.formProps = user
         )
 
-
-        //pdf thing here
+        axios.get("/api/addform", user)
+        .then(
+            
+        )
+        
         completeForm = pdf.regularForm(user)
-        console.log("Complete Form: ", completeForm);
+        console.log("Complete Form: ", completeForm)
     }
 
     _next = () => {
@@ -121,7 +117,6 @@ class PatientForm extends React.Component {
                     <p>Page {this.state.currentPage} </p>
 
                     <form onSubmit={this.handleSubmit}>
-                        {/* render the form steps and pass required props in */}
 
                         <GeneralInfo
                             currentPage={this.state.currentPage}

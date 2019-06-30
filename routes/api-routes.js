@@ -18,6 +18,17 @@ module.exports = function (app) {
 		});
 	});
 
+	app.post("/api/addform", function (req, res) {
+		// const { email, name, dob, age, otherProblems, lastPsyProvider, lastPsyVisit, psyMeds, psySuicide, erCount, erLastTime } = req.body;
+		db.Form.create(req.body)
+			.then(function (dbForm) {
+				return db.User.findOneAndUpdate({ _id: req.params.id }, { form: dbForm._id }, { new: true })
+			}).then(function (form) {
+				res.json(form);
+			}).catch(function (err) {
+				res.json(err)
+			})
+	})
 	app.post("/api/authenticate", function (req, res) {
 		const { email, password } = req.body;
 		db.User.findOne({ email: email }).then(function (dbUser) {

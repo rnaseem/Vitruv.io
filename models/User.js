@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const bcrypt = require("bcryptjs");
 
 const UserSchema = new Schema({
-    email:{
+    email: {
         type: String,
         trim: true,
         required: "Email is Required"
@@ -20,7 +20,11 @@ const UserSchema = new Schema({
         trim: true,
         required: "password is Required",
         type: String
-    }
+    },
+    // form: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: "Form"
+    //   }
 });
 
 UserSchema.methods.comparePassword = function (inputPass) {

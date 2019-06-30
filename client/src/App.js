@@ -33,7 +33,7 @@ class App extends Component {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
             <Route exact path="/VitruvianWoman" component={VitruvianWoman} />
-              <ProtectedRoute exact path="/user" component={UserPage} />
+              <Route exact path="/user" component={UserPage} />
           </Switch>
         </UserContext.Provider>
       </Router>
