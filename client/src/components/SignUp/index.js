@@ -23,7 +23,7 @@ class SignUp extends React.Component {
         this.setState({ [name]: value });
     }
 
-    handleSubmit(e) {
+    handleSubmit = e => {
         e.preventDefault();
         const { password, passwordConfirm } = this.state;
         if (password !== passwordConfirm) {
@@ -67,7 +67,7 @@ class SignUp extends React.Component {
                                 </Button>
                             </div>
                             <div className="modal-body">
-                                <form id="signUpForm" onSubmit={e => { this.handleSubmit(e) }}>
+                                <form id="signUpForm" onSubmit={this.handleSubmit}>
                                     <div className="form-group">
                                         <label htmlFor="fullName"><strong>Full Name</strong></label>
                                         <input
