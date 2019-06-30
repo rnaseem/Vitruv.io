@@ -6,7 +6,7 @@ const db = require("../models");
 module.exports = function (app) {
 	app.post("/api/signup", function (req, res) {
 		db.User.create(req.body).then(function (result) {
-			res.json({ message: "Virtuv.io account created" });
+			res.json({ message: "Vitruv.io account created" });
 		}).catch(function (err) {
 			res.status(500).json({ error: err.message });
 		});

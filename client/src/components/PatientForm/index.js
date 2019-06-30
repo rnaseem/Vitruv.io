@@ -54,11 +54,11 @@ class PatientForm extends React.Component {
             this.state.formProps = user
         )
 
-        axios.get("/api/addform", user)
-        .then(
-            
-        )
-        
+        axios.post("/api/addform", user)
+            .then(
+                console.log("fired")
+            )
+
         completeForm = pdf.regularForm(user)
         console.log("Complete Form: ", completeForm)
     }
