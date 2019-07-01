@@ -61,7 +61,7 @@ class SignUp extends React.Component {
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title"><strong>Creat an Account</strong></h5>
+                                <h5 className="modal-title"><strong>Create an Account</strong></h5>
                                 <Button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </Button>

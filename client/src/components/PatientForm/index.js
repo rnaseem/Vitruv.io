@@ -223,7 +223,7 @@ function ProblemsPage(props) {
     }
     return (
         <div className="form-group">
-            <label htmlFor="otherProblems">otherProblems</label>
+            <label htmlFor="otherProblems">Current Symptoms</label>
             <input
                 className="form-control"
                 id="otherProblems"
@@ -244,7 +244,7 @@ function PsyInfo(props) {
     return (
         <div className="form-group">
             {/* checkbox, if yes, answer question */}
-            <label htmlFor="lastPsyProvider">lastPsyProvider</label>
+            <label htmlFor="lastPsyProvider">Name of last psychiatric provider?</label>
             <input
                 className="form-control"
                 id="lastPsyProvider"
@@ -255,7 +255,7 @@ function PsyInfo(props) {
                 onChange={props.handleChange}
             />
             {/* checkbox, if yes, answer question */}
-            <label htmlFor="lastPsyVisit">lastPsyVisit</label>
+            <label htmlFor="lastPsyVisit">Last visit to psychiatric provider?</label>
             <input
                 className="form-control"
                 id="lastPsyVisit"
@@ -265,7 +265,7 @@ function PsyInfo(props) {
                 value={props.lastPsyVisit}
                 onChange={props.handleChange}
             />
-            <label htmlFor="psyMeds">psyMeds</label>
+            <label htmlFor="psyMeds">Current Medication:</label>
             <input
                 className="form-control"
                 id="psyMeds"
@@ -275,7 +275,7 @@ function PsyInfo(props) {
                 value={props.psyMeds}
                 onChange={props.handleChange}
             />
-            <label htmlFor="psySuicide">psySuicide</label>
+            <label htmlFor="psySuicide">Have you ever attempted suicide?</label>
             <input
                 className="form-control"
                 id="psySuicide"
@@ -296,7 +296,7 @@ function PsyInfoContinued(props) {
     return (
         <React.Fragment>
             <div className="form-group">
-                <label htmlFor="erCount">erCount</label>
+                <label htmlFor="erCount">How many visits have you had to the emergency room?</label>
                 <input
                     className="form-control"
                     id="erCount"
@@ -306,7 +306,7 @@ function PsyInfoContinued(props) {
                     value={props.erCount}
                     onChange={props.handleChange}
                 />
-                <label htmlFor="erLastTime">erLastTime</label>
+                <label htmlFor="erLastTime">When was the last time in the ER?</label>
                 <input
                     className="form-control"
                     id="erLastTime"
