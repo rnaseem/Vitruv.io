@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import PatientForm from "../PatientForm";
 
 class UserPage extends React.Component {
 
@@ -19,8 +20,10 @@ class UserPage extends React.Component {
             <Container className="container" id="userContainer">
                 <Row className="row">
                     <h1>User Page</h1>
+                    <i>Answer the questions below to get a patient form.</i>
                 </Row>
                 <div>
+                    <PatientForm />
                 <Button className="user-btn" >send to form component</Button>
                 </div>
             </Container>

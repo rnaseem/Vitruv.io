@@ -14,6 +14,7 @@ class PatientForm extends React.Component {
         super(props)
         this.state = {
             currentPage: 1,
+            email: '',
             name: '',
             dob: '',
             age: '',
@@ -39,8 +40,10 @@ class PatientForm extends React.Component {
         event.preventDefault()
 
         let user = {
+            email: this.state.email,
             name: this.state.name,
             dob: this.state.dob,
+            age: this.state.age,
             otherProblems: this.state.otherProblems,
             lastPsyProvider: this.state.lastPsyProvider,
             lastPsyVisit: this.state.lastPsyVisit,
@@ -121,6 +124,7 @@ class PatientForm extends React.Component {
                         <GeneralInfo
                             currentPage={this.state.currentPage}
                             handleChange={this.handleChange}
+                            email={this.state.email}
                             name={this.state.name}
                             dob={this.state.dob}
                             age={this.state.age}
@@ -168,6 +172,16 @@ function GeneralInfo(props) {
     return (
         <div className="form-group">
             <h3>General Information</h3>
+            <label htmlFor="email">Email Address</label>
+            <input
+                className="form-control"
+                id="email"
+                name="email"
+                type="text"
+                placeholder="Enter your email address"
+                value={props.email}
+                onChange={props.handleChange}
+            />
             <label htmlFor="patientName">name</label>
             <input
                 className="form-control"

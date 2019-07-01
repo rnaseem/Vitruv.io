@@ -28,12 +28,12 @@ class App extends Component {
         <UserContext.Provider value={{ setUser, user }}>
           <Nav />
           <Switch>
-          <Route exact path='/form' component={PatientForm} />
+            <Route exact path='/form' component={PatientForm} />
             <Route exact path="/" component={VitruviAnimation} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
             <Route exact path="/VitruvianWoman" component={VitruvianWoman} />
-              <Route exact path="/user" component={UserPage} />
+            <Route exact path="/user" component={UserPage} />
           </Switch>
         </UserContext.Provider>
       </Router>

@@ -19,15 +19,14 @@ module.exports = function (app) {
 	});
 
 	app.post("/api/addform", function (req, res) {
+		console.log("body", req.body);
+
 		// const { email, name, dob, age, otherProblems, lastPsyProvider, lastPsyVisit, psyMeds, psySuicide, erCount, erLastTime } = req.body;
-		db.Form.create(req.body)
-			.then(function (dbForm) {
-				return db.User.findOneAndUpdate({ _id: req.params.id }, { form: dbForm._id }, { new: true })
-			}).then(function (form) {
-				res.json(form);
-			}).catch(function (err) {
-				res.json(err)
-			})
+		db.User.findOneAndUpdate({email: req.body.email}, { form: req.body }).then(function (data) {
+			res.json(data)
+		}).catch(function (err) {
+			res.status(500).json({ error: err.message });
+		});
 	})
 	app.post("/api/authenticate", function (req, res) {
 		const { email, password } = req.body;
@@ -56,12 +55,6 @@ module.exports = function (app) {
 		res.json({ message: user.email + "authenticated" });
 	});
 
-	app.get("/api/public", function (req, res) {
-		res.json({
-			message: "public"
-		});
-	});
-
 	app.get("/api/body", function (req, res) {
 		db.Body.find({})
 			.then(function (data) {
@@ -83,22 +76,4 @@ module.exports = function (app) {
 			})
 	});
 
-
-	app.get("/api/symptoms", function (req, res) {
-		db.Symptoms.find({})
-			// .populate('Diagnosis')
-			.then(function (data) {
-				res.json(data)
-			});
-	});
-
-	// app.get("/api/diagnosis", function (req, res) {
-	// 	db.Diagnosis.find({})
-	// 		.then(function (data) {
-	// 			res.json(data);
-	// 		})
-	// 		.catch(function (err) {
-	// 			res.json(err);
-	// 		});
-	// });
 };

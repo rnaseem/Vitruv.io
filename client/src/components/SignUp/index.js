@@ -116,7 +116,7 @@ class SignUp extends React.Component {
                                             value={this.state.passwordConfirm}
                                             onChange={this.handleChange} />
                                     </div>
-                                    <button type="submit" data-dismiss="modal" className="btn btn-primary">Submit</button>
+                                    <button type="submit" className="btn btn-primary">Submit</button>
                                 </form>
                             </div>
                             <div className="modal-footer">

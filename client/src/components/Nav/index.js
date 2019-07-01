@@ -54,14 +54,12 @@ class NavBar extends React.Component {
                         (
                             <>
                                 <Nav className="navbar navbar-expand-lg navbar-light">
-                                    <h2 style={{ fontSize: 20 }}>Welcome, {context.user.email}</h2>
-                                    <a className="navbar-brand" id="loginLink" href="/user" >Your Page</a>
-                                    <a className="navbar-brand" id="loginLink" href="/logout" onClick={this.handleLogOut}>Logout</a>
+                                    <h4 style={{ fontSize: 20 }}>Welcome, {context.user.email}</h4>
+                                    <Link className="navbar-brand" id="loginLink" to="/user" >Your Page</Link>
+                                    <a className="navbar-brand" id="loginLink" href="/" onClick={this.handleLogOut}>Logout</a>
                                     <Link to="/VitruvianWoman" className={window.location.pathname === "/VitruvianWoman" ? "nav-link active" : "nav-link"}> Woman</Link>
                                     <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}> Man</Link>
-
                                 </Nav>
-
                             </>
                         )
                 }}
