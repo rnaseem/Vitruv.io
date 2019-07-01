@@ -41,6 +41,7 @@ class NavBar extends React.Component {
                         (
                             <>
                                 <Nav className="navbar navbar-expand-lg navbar-light">
+                                <h2 className="ml3">Vitruv.io</h2>
                                     <a className="navbar-brand" id="loginLink" href="#" onClick={this.handleLoginShow}>Login</a>
                                     <a className="navbar-brand" id="signUpLink" href="#" onClick={this.handleSignUpShow}>Sign Up</a>
                                     <Link to="/VitruvianWoman" className={window.location.pathname === "/VitruvianWoman" ? "nav-link active" : "nav-link"}> Woman</Link>
@@ -54,11 +55,13 @@ class NavBar extends React.Component {
                         (
                             <>
                                 <Nav className="navbar navbar-expand-lg navbar-light">
-                                    <h4 style={{ fontSize: 20 }}>Welcome, {context.user.email}</h4>
-                                    <Link className="navbar-brand" id="loginLink" to="/user" >Your Page</Link>
-                                    <a className="navbar-brand" id="loginLink" href="/" onClick={this.handleLogOut}>Logout</a>
+                                <h2 className="ml3">Vitruv.io</h2>
+                                    <h2 style={{ fontSize: 20 }}>Welcome, {context.user.email}</h2>
+                                    <a className="navbar-brand" id="loginLink" href="/user" onClick={this.handleLoginShow}>Your Page</a>
+                                    <a className="navbar-brand" id="loginLink" href="/logout" onClick={this.handleLoginShow}>Logout</a>
                                     <Link to="/VitruvianWoman" className={window.location.pathname === "/VitruvianWoman" ? "nav-link active" : "nav-link"}> Woman</Link>
                                     <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}> Man</Link>
+                                    
                                 </Nav>
                             </>
                         )

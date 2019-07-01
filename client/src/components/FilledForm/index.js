@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+const ref = React.createRef();
 // import { Document, Page } from 'react-pdf';
 // import { Document } from 'react-pdf/dist/entry.webpack';
 // class MyApp extends Component {

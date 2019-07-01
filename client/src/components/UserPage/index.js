@@ -6,6 +6,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import PatientForm from "../PatientForm";
 
+
 class UserPage extends React.Component {
 
     /*  1. grabbing the userData
@@ -22,10 +23,7 @@ class UserPage extends React.Component {
                     <h1>User Page</h1>
                     <i>Answer the questions below to get a patient form.</i>
                 </Row>
-                <div>
                     <PatientForm />
-                <Button className="user-btn" >send to form component</Button>
-                </div>
             </Container>
         )
     }

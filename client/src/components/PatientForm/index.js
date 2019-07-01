@@ -1,10 +1,12 @@
 import React from "react";
 import pdf from '../utils/pdf';
-import Pdf from "react-to-pdf";
 import axios from "axios";
 import FilledForm from "../FilledForm";
+import Pdf from "react-to-pdf";
+import Button from "react-bootstrap/Button";
 const ref = React.createRef();
 let completeForm;
+
 
 
 
@@ -158,8 +160,12 @@ class PatientForm extends React.Component {
                     </form>
 
                 </React.Fragment>
-
-                {formProps && completeForm}
+                  <div ref={ref}>
+                  {formProps && completeForm}
+                  </div>
+                <Pdf targetRef={ref} filename="form-complete.pdf">
+                    {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
+                </Pdf>
             </>
         );
     }
