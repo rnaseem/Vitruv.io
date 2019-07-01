@@ -3,23 +3,59 @@ const Schema = mongoose.Schema;
 const bcrypt = require("bcryptjs");
 
 const UserSchema = new Schema({
-    email:{
+    email: {
         type: String,
         trim: true,
-        required: "Email is Required"
+        required: "Email is Required",
+        index: {
+            unique: true
+        }
     },
     fullName: {
         type: String,
         trim: true,
         required: "name is Required"
-        // index: {
-        //     unique: true
-        // }
+
     },
     password: {
         trim: true,
         required: "password is Required",
         type: String
+    },
+    form: {
+        email: {
+            type: String
+        },
+        name: {
+            type: String
+        },
+        dob: {
+            type: String
+        },
+        age: {
+            type: Number
+        },
+        otherProblems: {
+            type: String
+        },
+        lastPsyProvider: {
+            type: String
+        },
+        lastPsyVisit: {
+            type: String
+        },
+        psyMeds: {
+            type: String
+        },
+        psySuicide: {
+            type: String
+        },
+        erCount: {
+            type: String
+        },
+        erLastTime: {
+            type: String
+        },
     }
 });
 

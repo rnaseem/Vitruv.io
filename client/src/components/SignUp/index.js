@@ -23,7 +23,7 @@ class SignUp extends React.Component {
         this.setState({ [name]: value });
     }
 
-    handleSubmit(e) {
+    handleSubmit = e => {
         e.preventDefault();
         const { password, passwordConfirm } = this.state;
         if (password !== passwordConfirm) {
@@ -51,9 +51,9 @@ class SignUp extends React.Component {
                 }).catch(err => {
                     console.log("Error", err.message)
                 })
-
         }
     }
+    
     render() {
         return (
             <>
@@ -61,13 +61,13 @@ class SignUp extends React.Component {
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title"><strong>Creat an Account</strong></h5>
+                                <h5 className="modal-title"><strong>Create an Account</strong></h5>
                                 <Button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </Button>
                             </div>
                             <div className="modal-body">
-                                <form id="signUpForm" onSubmit={e => { this.handleSubmit(e) }}>
+                                <form id="signUpForm" onSubmit={this.handleSubmit}>
                                     <div className="form-group">
                                         <label htmlFor="fullName"><strong>Full Name</strong></label>
                                         <input
@@ -116,7 +116,7 @@ class SignUp extends React.Component {
                                             value={this.state.passwordConfirm}
                                             onChange={this.handleChange} />
                                     </div>
-                                    <button type="submit" data-dismiss="modal" className="btn btn-primary">Submit</button>
+                                    <button type="submit" className="btn btn-primary">Submit</button>
                                 </form>
                             </div>
                             <div className="modal-footer">

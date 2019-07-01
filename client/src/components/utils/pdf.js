@@ -8,7 +8,7 @@ const pdf = {
 
             <FilledForm {...user} />
         )
-    }
+    },
 }
 
 export default pdf;

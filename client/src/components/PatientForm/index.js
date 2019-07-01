@@ -1,17 +1,25 @@
 import React from "react";
 import pdf from '../utils/pdf';
+import axios from "axios";
 import FilledForm from "../FilledForm";
+import Pdf from "react-to-pdf";
+import Button from "react-bootstrap/Button";
+const ref = React.createRef();
 let completeForm;
+
+
+
+
 
 class PatientForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             currentPage: 1,
+            email: '',
             name: '',
             dob: '',
             age: '',
-            problems: [],
             otherProblems: '',
             lastPsyProvider: '',
             lastPsyVisit: '',
@@ -19,7 +27,6 @@ class PatientForm extends React.Component {
             psySuicide: '',
             erCount: '',
             erLastTime: '',
-            psySymptoms: [],
             formProps: null
 
         }
@@ -33,21 +40,12 @@ class PatientForm extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault()
-        const {
-            name,
-            dob,
-            otherProblems,
-            lastPsyProvider,
-            lastPsyVisit,
-            psyMeds,
-            psySuicide,
-            erCount,
-            erLastTime,
-        } = this.state
 
         let user = {
+            email: this.state.email,
             name: this.state.name,
             dob: this.state.dob,
+            age: this.state.age,
             otherProblems: this.state.otherProblems,
             lastPsyProvider: this.state.lastPsyProvider,
             lastPsyVisit: this.state.lastPsyVisit,
@@ -61,10 +59,13 @@ class PatientForm extends React.Component {
             this.state.formProps = user
         )
 
+        axios.post("/api/addform", user)
+            .then(
+                console.log("fired")
+            )
 
-        //pdf thing here
         completeForm = pdf.regularForm(user)
-        console.log("Complete Form: ", completeForm);
+        console.log("Complete Form: ", completeForm)
     }
 
     _next = () => {
@@ -117,15 +118,15 @@ class PatientForm extends React.Component {
         return (
             <>
                 <React.Fragment>
-                    <h1><strong>Virtruvio Mock Patient Form</strong></h1>
+                    <h1><strong>Vitruvio Mock Patient Form</strong></h1>
                     <p>Page {this.state.currentPage} </p>
 
                     <form onSubmit={this.handleSubmit}>
-                        {/* render the form steps and pass required props in */}
 
                         <GeneralInfo
                             currentPage={this.state.currentPage}
                             handleChange={this.handleChange}
+                            email={this.state.email}
                             name={this.state.name}
                             dob={this.state.dob}
                             age={this.state.age}
@@ -159,8 +160,7 @@ class PatientForm extends React.Component {
                     </form>
 
                 </React.Fragment>
-
-                {formProps && completeForm}
+                {completeForm}
             </>
         );
     }
@@ -173,6 +173,16 @@ function GeneralInfo(props) {
     return (
         <div className="form-group">
             <h3>General Information</h3>
+            <label htmlFor="email">Email Address</label>
+            <input
+                className="form-control"
+                id="email"
+                name="email"
+                type="text"
+                placeholder="Enter your email address"
+                value={props.email}
+                onChange={props.handleChange}
+            />
             <label htmlFor="patientName">name</label>
             <input
                 className="form-control"
@@ -213,13 +223,13 @@ function ProblemsPage(props) {
     }
     return (
         <div className="form-group">
-            <label htmlFor="otherProblems">otherProblems</label>
+            <label htmlFor="otherProblems">Current Symptoms</label>
             <input
                 className="form-control"
                 id="otherProblems"
                 name="otherProblems"
                 type="text"
-                placeholder="problems"
+                placeholder="symptoms"
                 value={props.problems}
                 onChange={props.handleChange}
             />
@@ -234,44 +244,44 @@ function PsyInfo(props) {
     return (
         <div className="form-group">
             {/* checkbox, if yes, answer question */}
-            <label htmlFor="lastPsyProvider">lastPsyProvider</label>
+            <label htmlFor="lastPsyProvider">Name of last psychiatric provider?</label>
             <input
                 className="form-control"
                 id="lastPsyProvider"
                 name="lastPsyProvider"
                 type="text"
-                placeholder="Enter psyProvider"
+                placeholder=""
                 value={props.lastPsyProvider}
                 onChange={props.handleChange}
             />
             {/* checkbox, if yes, answer question */}
-            <label htmlFor="lastPsyVisit">lastPsyVisit</label>
+            <label htmlFor="lastPsyVisit">Last visit to psychiatric provider?</label>
             <input
                 className="form-control"
                 id="lastPsyVisit"
                 name="lastPsyVisit"
                 type="text"
-                placeholder="Enter lastPsyVisit"
+                placeholder=""
                 value={props.lastPsyVisit}
                 onChange={props.handleChange}
             />
-            <label htmlFor="psyMeds">psyMeds</label>
+            <label htmlFor="psyMeds">Current Medication:</label>
             <input
                 className="form-control"
                 id="psyMeds"
                 name="psyMeds"
                 type="psyMeds"
-                placeholder="Enter psyMeds"
+                placeholder=""
                 value={props.psyMeds}
                 onChange={props.handleChange}
             />
-            <label htmlFor="psySuicide">psySuicide</label>
+            <label htmlFor="psySuicide">Have you ever attempted suicide?</label>
             <input
                 className="form-control"
                 id="psySuicide"
                 name="psySuicide"
                 type="psySuicide"
-                placeholder="Enter psySuicide"
+                placeholder=""
                 value={props.psySuicide}
                 onChange={props.handleChange}
             />
@@ -286,23 +296,23 @@ function PsyInfoContinued(props) {
     return (
         <React.Fragment>
             <div className="form-group">
-                <label htmlFor="erCount">erCount</label>
+                <label htmlFor="erCount">How many visits have you had to the emergency room?</label>
                 <input
                     className="form-control"
                     id="erCount"
                     name="erCount"
                     type="erCount"
-                    placeholder="Enter erCount"
+                    placeholder=""
                     value={props.erCount}
                     onChange={props.handleChange}
                 />
-                <label htmlFor="erLastTime">erLastTime</label>
+                <label htmlFor="erLastTime">When was the last time in the ER?</label>
                 <input
                     className="form-control"
                     id="erLastTime"
                     name="erLastTime"
                     type="erLastTime"
-                    placeholder="Enter erLastTime"
+                    placeholder=""
                     value={props.erLastTime}
                     onChange={props.handleChange}
                 />
