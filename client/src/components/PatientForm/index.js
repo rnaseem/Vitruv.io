@@ -229,7 +229,7 @@ function ProblemsPage(props) {
                 id="otherProblems"
                 name="otherProblems"
                 type="text"
-                placeholder="problems"
+                placeholder="symptoms"
                 value={props.problems}
                 onChange={props.handleChange}
             />
@@ -250,7 +250,7 @@ function PsyInfo(props) {
                 id="lastPsyProvider"
                 name="lastPsyProvider"
                 type="text"
-                placeholder="Enter psyProvider"
+                placeholder=""
                 value={props.lastPsyProvider}
                 onChange={props.handleChange}
             />
@@ -261,7 +261,7 @@ function PsyInfo(props) {
                 id="lastPsyVisit"
                 name="lastPsyVisit"
                 type="text"
-                placeholder="Enter lastPsyVisit"
+                placeholder=""
                 value={props.lastPsyVisit}
                 onChange={props.handleChange}
             />
@@ -271,7 +271,7 @@ function PsyInfo(props) {
                 id="psyMeds"
                 name="psyMeds"
                 type="psyMeds"
-                placeholder="Enter psyMeds"
+                placeholder=""
                 value={props.psyMeds}
                 onChange={props.handleChange}
             />
@@ -281,7 +281,7 @@ function PsyInfo(props) {
                 id="psySuicide"
                 name="psySuicide"
                 type="psySuicide"
-                placeholder="Enter psySuicide"
+                placeholder=""
                 value={props.psySuicide}
                 onChange={props.handleChange}
             />
@@ -302,7 +302,7 @@ function PsyInfoContinued(props) {
                     id="erCount"
                     name="erCount"
                     type="erCount"
-                    placeholder="Enter erCount"
+                    placeholder=""
                     value={props.erCount}
                     onChange={props.handleChange}
                 />
@@ -312,7 +312,7 @@ function PsyInfoContinued(props) {
                     id="erLastTime"
                     name="erLastTime"
                     type="erLastTime"
-                    placeholder="Enter erLastTime"
+                    placeholder=""
                     value={props.erLastTime}
                     onChange={props.handleChange}
                 />
