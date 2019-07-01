@@ -66,13 +66,13 @@ module.exports = function (app) {
 		});
 	})
 
-	app.post("/api/deleteform", function (req, res){
-		const { email } = req.body;
-		db.User.findOneAndUpdate({email: email}, { form: {}}).then(function (data) {
-			res.json(data)
-		}).catch(function (err) {
-			res.status(500).json({ error: err.message });
-		});
+	// app.post("/api/deleteform", function (req, res){
+	// 	const { email } = req.body;
+	// 	db.User.findOneAndUpdate({email: email}, { form: {}}).then(function (data) {
+	// 		res.json(data)
+	// 	}).catch(function (err) {
+	// 		res.status(500).json({ error: err.message });
+	// 	});
 
 	app.get("/api/body/:id", function (req, res) {
 		let id = req.params.id
