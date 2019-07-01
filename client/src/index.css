@@ -10,6 +10,16 @@ svg {
   top: 60px
 }
 
+h2 {
+  font-family: 'Alex Brush', cursive;
+  padding-top: 10px;
+  padding-right: 30px;
+  color: #4d3623
+  }
+
+    
+  
+
 html {
   background: url("parchmentpaper.jpg") no-repeat center center fixed;
   width: 100vh;
@@ -21,3 +31,8 @@ html {
   width: 100vh;
   background-size: cover;
 }
+
+h5, h1, h3 {
+  font-family: 'Alex Brush', cursive;
+  color: #4d3623
+  }
