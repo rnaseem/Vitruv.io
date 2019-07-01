@@ -1,8 +1,17 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
 import Pdf from "react-to-pdf";
+import Axios from 'axios';
 const ref = React.createRef();
+
+// function handleDelete(e, email) {
+//     e.preventDefault();
+//     Axios.post("api/deleteform", email).then(
+//         console.log("delete fired")
+//     )
+// }
 
 function FilledForm(props) {
     console.log("Filled form props", props)
@@ -45,8 +54,12 @@ function FilledForm(props) {
                 </Row>
             </Container>
                 <Pdf targetRef={ref} filename="form-complete.pdf" x={.5} y={.5}>
-                    {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
+                    {({ toPdf }) => <Button onClick={toPdf}>Generate Pdf</Button>}
                 </Pdf>
+                <div>
+                    <br/>
+                    <Button onClick={e=>{this.handleDelete(props.email)}}>Delete Patient Form</Button>
+                </div>
             </>
         )
     }
