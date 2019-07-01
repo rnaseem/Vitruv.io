@@ -7,6 +7,17 @@ nav{
     background-image: url(./vitru.io.png);
 }
 
+h2 {
+font-family: 'Alex Brush', cursive;
+padding-top: 10px;
+padding-right: 30px;
+color: #4d3623
+}
+
+h5, h1, h3 {
+    font-family: 'Alex Brush', cursive;
+    color: #4d3623
+    }
 
 #loginLink {
 	-moz-box-shadow: 0px 0px 0px 2px #000000;
