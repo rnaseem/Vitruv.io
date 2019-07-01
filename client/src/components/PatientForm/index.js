@@ -118,7 +118,7 @@ class PatientForm extends React.Component {
         return (
             <>
                 <React.Fragment>
-                    <h1><strong>Virtruvio Mock Patient Form</strong></h1>
+                    <h1><strong>Vitruvio Mock Patient Form</strong></h1>
                     <p>Page {this.state.currentPage} </p>
 
                     <form onSubmit={this.handleSubmit}>
