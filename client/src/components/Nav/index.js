@@ -57,8 +57,8 @@ class NavBar extends React.Component {
                                 <Nav className="navbar navbar-expand-lg navbar-light">
                                 <h2 className="ml3">Vitruv.io</h2>
                                     <h2 style={{ fontSize: 20 }}>Welcome, {context.user.email}</h2>
-                                    <a className="navbar-brand" id="loginLink" href="/user" onClick={this.handleLoginShow}>Your Page</a>
-                                    <a className="navbar-brand" id="loginLink" href="/logout" onClick={this.handleLoginShow}>Logout</a>
+                                    <Link className="navbar-brand" id="userLink" to="/user" >Your Page</Link>
+                                    <Link className="navbar-brand" id="logOut" to="/" onClick={this.handleLogOut}>Logout</Link>
                                     <Link to="/VitruvianWoman" className={window.location.pathname === "/VitruvianWoman" ? "nav-link active" : "nav-link"}> Woman</Link>
                                     <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}> Man</Link>
                                     

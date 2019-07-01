@@ -1,41 +1,14 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import Pdf from "react-to-pdf";
 const ref = React.createRef();
-// import { Document, Page } from 'react-pdf';
-// import { Document } from 'react-pdf/dist/entry.webpack';
-// class MyApp extends Component {
-//     state = {
-//       numPages: null,
-//       pageNumber: 1,
-//     }
-   
-//     onDocumentLoadSuccess = ({ numPages }) => {
-//       this.setState({ numPages });
-//     }
-  
-   
-//     render() {
-//       const { pageNumber, numPages } = this.state;
-   
-//       return (
-//         <div>
-//           <Document
-//             file="somefile.pdf"
-//             onLoadSuccess={this.onDocumentLoadSuccess}
-//           >
-//             <Page pageNumber={pageNumber} />
-//           </Document>
-//           <p>Page {pageNumber} of {numPages}</p>
-//         </div>
-//       );
-//     }
-//   }
 
 function FilledForm(props) {
     console.log("Filled form props", props)
         return (
-            <Container>
+            <>
+            <Container ref={ref}>
                 <Row>
                     <h1>Virtruv.io Mock Patient Form</h1>
                     <i>This is not an official medical document</i>
@@ -71,6 +44,10 @@ function FilledForm(props) {
                     </ul>
                 </Row>
             </Container>
+                <Pdf targetRef={ref} filename="form-complete.pdf" x={.5} y={.5}>
+                    {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
+                </Pdf>
+            </>
         )
     }
 

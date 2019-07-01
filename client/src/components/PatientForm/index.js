@@ -160,12 +160,7 @@ class PatientForm extends React.Component {
                     </form>
 
                 </React.Fragment>
-                  <div ref={ref}>
-                  {formProps && completeForm}
-                  </div>
-                <Pdf targetRef={ref} filename="form-complete.pdf">
-                    {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
-                </Pdf>
+                {completeForm}
             </>
         );
     }
