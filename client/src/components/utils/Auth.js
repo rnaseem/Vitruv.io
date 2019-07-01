@@ -18,7 +18,7 @@ function Auth () {
 	function logOut (cb) {
 		localStorage.removeItem("token");
 		loggedIn = false;
-		cb();
+		// cb();
 	}
 
 	function getToken () {
